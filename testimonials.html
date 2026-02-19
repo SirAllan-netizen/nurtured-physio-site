@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Testimonials | Dr. Kibibi Mjomba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Client testimonials, treatment moments, and sample videos for Dr. Kibibi Mjomba’s mobile physiotherapy & wellness services." />
+
+  <style>
+    :root {
+      --primary: #1b8a7a;
+      --primary-dark: #146457;
+      --accent: #f1b44c;
+      --bg: #f6f8fa;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --max-width: 1100px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Gill Sans MT', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(246, 248, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.5rem; max-width: var(--max-width); margin: 0 auto;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.05rem; }
+    .nav-logo-badge {
+      width: 34px; height: 34px; border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fef9c3, #1b8a7a);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 0.85rem; font-weight: 800;
+    }
+    .nav-links { display: flex; gap: 1.2rem; font-size: 0.95rem; align-items: center; }
+    .nav-links a { position: relative; padding-bottom: 0.2rem; }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 2px; background: var(--primary); transition: width 0.2s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 0.45rem 0.95rem; border-radius: 999px;
+      border: 1px solid var(--primary); background: var(--primary);
+      color: var(--white); font-size: 0.9rem; font-weight: 600;
+    }
+
+    main { padding: 3.5rem 0 2rem; }
+    h1, h2, h3 { font-weight: 700; color: #111827; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #e0f2f1; color: #064e3b;
+      padding: 0.2rem 0.75rem; border-radius: 999px;
+      font-size: 0.78rem; margin-bottom: 0.75rem;
+    }
+    .subtitle { color: var(--muted); margin-top: 0.6rem; max-width: 48rem; }
+    section { padding: 3rem 0; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .gallery figure {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+    }
+    .gallery img { width: 100%; height: 240px; object-fit: cover; }
+    .gallery figcaption {
+      padding: 0.75rem 0.9rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Videos */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .video-card video, .video-card iframe {
+      width: 100%;
+      border-radius: var(--radius-md);
+      display: block;
+      border: 1px solid var(--border);
+    }
+    .video-meta { margin-top: 0.7rem; color: var(--muted); font-size: 0.95rem; }
+
+    /* Reviews */
+    .review {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .review-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .stars { color: #b45309; letter-spacing: 1px; } /* simple star tint */
+    .review p { color: var(--muted); }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 50;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-content {
+      max-width: 980px;
+      width: 100%;
+      background: #0b1220;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .lightbox-content img {
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      background: #0b1220;
+    }
+    .lightbox-caption {
+      padding: 0.85rem 1rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      background: rgba(0,0,0,0.25);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+      z-index: 60;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.4rem 0 1.1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <div class="nav-logo">
+        <div class="nav-logo-badge">KJ</div>
+        <div>
+          <div>Dr. Kibibi Mjomba</div>
+          <small style="font-size:0.7rem;color:#6b7280;">Mobile Physio & Wellness</small>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="index.html#booking">Book</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <a href="index.html#booking" class="nav-cta">Book now</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <span class="tag">⭐ Social Proof • Real Sessions • Real Results</span>
+      <h1>Testimonials & Treatment Moments</h1>
+      <p class="subtitle">
+        Here you’ll find client feedback plus photo/video samples from sessions.
+        <strong>Tip:</strong> Only share media you have permission to use.
+      </p>
+
+      <!-- Quick stats / trust -->
+      <section>
+        <div class="grid-3">
+          <div class="card">
+            <h3>✅ In-Home Convenience</h3>
+            <p class="subtitle">Mobile sessions that fit your schedule and comfort.</p>
+          </div>
+          <div class="card">
+            <h3>🦴 Pain & Mobility Support</h3>
+            <p class="subtitle">Rehab, posture, mobility, and wellness care.</p>
+          </div>
+          <div class="card">
+            <h3>🌿 Personalized Plans</h3>
+            <p class="subtitle">Each session tailored to your condition and goals.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Photo Gallery -->
+      <section>
+        <h2>Photo Gallery</h2>
+        <p class="subtitle">Add your massage/treatment images in the <code>assets/</code> folder and update the filenames below.</p>
+
+        <div class="gallery" id="gallery">
+          <figure data-full="assets/massage-1.jpg" data-caption="Home session: soft tissue work for neck & shoulder tension.">
+            <img src="assets/massage-1.jpg" alt="Massage session sample 1">
+            <figcaption>Neck & shoulder tension relief</figcaption>
+          </figure>
+
+          <figure data-full="assets/massage-2.jpg" data-caption="Mobile visit: lower back pain management & mobility support.">
+            <img src="assets/massage2.jpg" alt="Massage session sample 2">
+            <figcaption>Lower back support</figcaption>
+          </figure>
+
+          <figure data-full="assets/massage3.png" data-caption="Workplace session: posture and ergonomics-focused treatment.">
+            <img src="assets/massage3.jpg" alt="Massage session sample 3">
+            <figcaption>Posture + ergonomics focus</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Videos -->
+      <section>
+        <h2>Samples of Full body mobility</h2>
+        <p class="subtitle">Check them out.</p>
+
+        <div class="video-grid">
+          <div class="card video-card">
+            <video controls preload="metadata" poster="assets/Full body mobility.mp4">
+              <source src="assets/Full body mobility.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p class="video-meta">Sample: guided stretches for mobility + recovery.</p>
+          </div>
+      </section>
+
+      <!-- Reviews -->
+      <section>
+        <h2>Client Reviews</h2>
+        <p class="subtitle">Replace names with initials if you want privacy.</p>
+
+        <div class="grid-3">
+          <div class="card review">
+            <div class="review-top">
+              <strong>J. K. (Karen)</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“I had constant shoulder pain. After two sessions, I could move comfortably again. Very professional and gentle.”</p>
+          </div>
+
+          <div class="card review">
+            <div class="review-top">
+              <strong>M. W. (Westlands)</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“The home visit was so convenient. Clear exercises, great follow-up, and my lower back improved a lot.”</p>
+          </div>
+
+          <div class="card review">
+            <div class="review-top">
+              <strong>A. N. (Kilimani)</strong>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>“Posture coaching + massage helped my headaches reduce. I like how everything was explained step by step.”</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕ Close</button>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-content">
+      <img id="lightboxImg" alt="">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2026 Dr. Kibibi Mjomba — Mobile Physiotherapy & Wellness
+    </div>
+  </footer>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxImg.alt = caption || "Gallery image";
+      lightboxCaption.textContent = caption || "";
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = "";
+      lightboxCaption.textContent = "";
+    }
+
+    document.getElementById('gallery').addEventListener('click', (e) => {
+      const figure = e.target.closest('figure');
+      if (!figure) return;
+      openLightbox(figure.dataset.full, figure.dataset.caption);
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dr. Kibibi Mjomba | Mobile Physiotherapist & Wellness Expert</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Mobile physiotherapy and wellness services by Dr. Kibibi Mjomba. In-home physiotherapy for pain relief, recovery, and long-term wellness."
+  />
+
+  <style>
+    @font-face {
+      font-family: "Gill Sans MT";
+      src: local("Gill Sans MT"), local("GillSansMT");
+    }
+
+    :root {
+      --primary: #1b8a7a;
+      --primary-dark: #146457;
+      --accent: #f1b44c;
+      --bg: #f6f8fa;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --max-width: 1100px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-strong: 0 14px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Gill Sans MT", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section { padding: 4.5rem 0; }
+    h1, h2, h3 { font-weight: 800; color: #111827; line-height: 1.2; }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(246, 248, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      min-width: 240px;
+    }
+
+    /* KJ badge (requested) */
+    .nav-logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 18px rgba(27, 138, 122, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      flex-shrink: 0;
+    }
+
+    .nav-doctor-name { font-weight: 900; color: #111827; }
+    .nav-subtitle { font-size: 0.7rem; color: var(--muted); display: block; margin-top: 0.05rem; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.15rem;
+      font-size: 0.95rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.2s ease;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(27, 138, 122, 0.25);
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(27, 138, 122, 0.32);
+    }
+
+    /* ── LITTLE UI HELPERS ── */
+    .section-header {
+      max-width: 50rem;
+      margin: 0 auto 2.2rem;
+      text-align: center;
+    }
+
+    .section-header p {
+      margin-top: 0.7rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0f2f1;
+      color: #064e3b;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0f2f1;
+      color: #064e3b;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      margin-bottom: 0.9rem;
+      font-weight: 600;
+      border: 1px solid rgba(27, 138, 122, 0.15);
+    }
+
+    /* ── HERO (keep your original layout, borrow the right card polish) ── */
+    .hero {
+      padding: 5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -160px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27, 138, 122, 0.07), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-brand img {
+      height: 74px;
+      width: auto;
+      border-radius: 14px;
+      padding: 8px;
+      background: var(--white);
+      border: 1px solid rgba(229, 231, 235, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-brand-name strong {
+      display: block;
+      font-size: 1.05rem;
+      color: #111827;
+      line-height: 1.1;
+    }
+
+    .hero-brand-name small {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span { color: var(--primary); }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 33rem;
+      margin-bottom: 1.8rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-outline {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      font-family: "Gill Sans MT", sans-serif;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(27, 138, 122, 0.28);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(27, 138, 122, 0.34);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(20, 100, 87, 0.35);
+      color: var(--primary-dark);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #e0f2f1;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* Right hero card (borrowed + improved) */
+    .hero-info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-info-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), #2cc4ae);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-stat {
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      padding: 0.9rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.6rem;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-stat small {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .hero-info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .hero-info-row strong { display: block; margin-bottom: 0.2rem; }
+    .hero-info-row p { color: var(--muted); font-size: 0.83rem; }
+
+    .area-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+    .chip {
+      background: #e0f2f1;
+      color: #064e3b;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      border: 1px solid rgba(27, 138, 122, 0.12);
+    }
+
+    /* ── ABOUT (keep simple, but add a nicer layout option) ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      background: linear-gradient(145deg, #e0f2f1, #ccece8);
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo-caption {
+      position: absolute;
+      bottom: 1rem; left: 1rem; right: 1rem;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      font-size: 0.82rem;
+      border: 1px solid var(--border);
+    }
+
+    .about-photo-caption strong { color: var(--primary); display: block; margin-bottom: 0.1rem; }
+    .about-content p { color: var(--muted); font-size: 0.97rem; margin-top: 0.8rem; line-height: 1.8; }
+
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .credential-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0f2f1;
+      color: var(--primary-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid rgba(27, 138, 122, 0.2);
+    }
+
+    /* ── SERVICES (keep your grid, borrow hover + icon tile) ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      border-color: rgba(27, 138, 122, 0.3);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #e0f2f1;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      margin-bottom: 0.9rem;
+      border: 1px solid rgba(27, 138, 122, 0.12);
+    }
+
+    .service-card h3 { margin-top: 0.2rem; font-size: 1.05rem; }
+    .service-card p { margin-top: 0.55rem; color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+    .service-card-tag {
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── HOW IT WORKS (borrowed section, fits your original flow) ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+      margin-top: 1.8rem;
+    }
+
+    .process-steps::before {
+      content: "";
+      position: absolute;
+      top: 1.5rem; left: 12%; right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      opacity: 0.18;
+    }
+
+    .process-step { text-align: center; position: relative; }
+
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid rgba(27, 138, 122, 0.3);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 0 auto 1rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .process-step h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .process-step p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── COVERAGE (keep your list, upgrade presentation) ── */
+    .coverage-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem 1rem;
+      max-width: 560px;
+      margin: 1.25rem auto 0;
+      padding: 0;
+    }
+
+    .coverage-list li {
+      background: var(--white);
+      border: 1px solid rgba(229, 231, 235, 0.9);
+      border-radius: 999px;
+      padding: 0.6rem 0.9rem;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+      font-weight: 700;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── BOOKING (keep your wrapper + add nicer steps without forcing a full form) ── */
+    .booking-wrapper {
+      background: #ecfdf5;
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      border: 1px solid #bbf7d0;
+      max-width: 860px;
+      margin: 0 auto;
+      box-shadow: 0 10px 22px rgba(16, 185, 129, 0.10);
+    }
+
+    .booking-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .booking-step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .booking-step-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .booking-step strong { display: block; margin-bottom: 0.1rem; }
+    .booking-step span { color: var(--muted); font-size: 0.82rem; }
+
+    /* ── CONTACT (keep your simple form) ── */
+    .contact-form {
+      max-width: 520px;
+      margin: 1.5rem auto 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.85rem 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      outline: none;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+
+    input:focus {
+      border-color: rgba(27, 138, 122, 0.55);
+      box-shadow: 0 0 0 4px rgba(27, 138, 122, 0.12);
+    }
+
+    /* ── FOOTER (borrow grid footer from newer code) ── */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      padding: 2.5rem 0 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand strong { font-size: 1rem; display: block; margin-bottom: 0.4rem; }
+    .footer-brand p { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { font-size: 0.87rem; color: var(--muted); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--primary); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── ANIMATIONS (soft + safe) ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-grid > * { animation: fadeUp 0.6s ease both; }
+    .hero-grid > *:nth-child(2) { animation-delay: 0.10s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .booking-steps { grid-template-columns: 1fr; }
+      .coverage-list { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 540px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <!-- KJ badge + doctor name (requested) -->
+      <div class="nav-logo">
+        <div class="nav-logo-badge">KJ</div>
+        <div>
+          <div class="nav-doctor-name">Dr. Kibibi Mjomba</div>
+          <small class="nav-subtitle">Mobile Physio & Wellness</small>
+        </div>
+      </div>
+
+      <!-- Keep your original nav items/flow -->
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How it Works</a>
+        <a href="#coverage">Areas</a>
+        <a href="#booking">Book</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="#blog">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <a href="#booking" class="nav-cta">Book now</a>
+    </nav>
+  </header>
+
+  <!-- HERO (Nurtured maintained) -->
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-brand">
+            <img src="assets/Nurtured-Logo.png" alt="Nurtured Logo" />
+            <div class="hero-brand-name">
+              <strong>Nurtured</strong>
+              <small>by Dr. Kibibi Mjomba</small>
+            </div>
+          </div>
+
+          <div class="tag">🌿 Mobile Physiotherapy · Nairobi</div>
+
+          <h1>
+            Expert Physiotherapy<br />
+            <span>Delivered to Your Door.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            A mobile physiotherapist offering personalized, evidence-based care in the comfort of your home or office.
+            Treat pain, restore movement, and build long-term wellness — wherever you are.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#booking" class="btn-primary">Book Mobile Appointment</a>
+            <a href="#services" class="btn-outline">Explore Services</a>
+          </div>
+        </div>
+
+        <!-- Borrowed + polished hero right card -->
+        <div class="hero-info-card">
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>8+</strong><small>Years Experience</small></div>
+            <div class="hero-stat"><strong>500+</strong><small>Patients Served</small></div>
+            <div class="hero-stat"><strong>98%</strong><small>Satisfaction Rate</small></div>
+            <div class="hero-stat"><strong>7+</strong><small>Areas Covered</small></div>
+          </div>
+
+          <div class="hero-info-row">
+            <span class="hero-info-icon">🏠</span>
+            <div>
+              <strong>Home & On-Site Visits</strong>
+              <p>Ideal for busy schedules, families, and anyone who prefers care at home.</p>
+            </div>
+          </div>
+
+          <div class="hero-info-row">
+            <span class="hero-info-icon">🌍</span>
+            <div>
+              <strong>Currently Serving</strong>
+              <div class="area-chips">
+                <span class="chip">Nairobi</span>
+                <span class="chip">Westlands</span>
+                <span class="chip">Karen</span>
+                <span class="chip">Kilimani</span>
+                <span class="chip">Lavington</span>
+                <span class="chip">Gigiri</span>
+                <span class="chip">Parklands</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ABOUT (still simple + clean, but upgraded layout) -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">About</div>
+        <h2>Meet Dr. Kibibi Mjomba</h2>
+        <p>
+          A licensed physiotherapist with expertise in movement science & wellness — offering therapy that fits seamlessly into your life.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo">
+          🩺
+          <div class="about-photo-caption">
+            <strong>Dr. Kibibi Mjomba</strong>
+            Licensed Physiotherapist · Mobile Care Across Nairobi
+          </div>
+        </div>
+
+        <div class="about-content">
+          <p>
+            I provide mobile physiotherapy to help you manage pain, recover after injury or surgery, and move with more confidence.
+            My approach is evidence-based, practical, and designed around your goals and daily routine.
+          </p>
+          <p>
+            Whether you're dealing with back/neck pain, mobility limitations, sports recovery, or posture concerns, we’ll build a clear plan you can follow.
+          </p>
+
+          <div class="credentials">
+            <span class="credential-badge">✓ Licensed & Professional</span>
+            <span class="credential-badge">✓ Evidence-Based Care</span>
+            <span class="credential-badge">✓ Home & Office Visits</span>
+            <span class="credential-badge">✓ Goal-Oriented Plans</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (your original concept, upgraded cards) -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Services</div>
+        <h2>What I Offer</h2>
+        <p>Personalized mobile physiotherapy and wellness services delivered to you.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🦴</div>
+          <h3>Pain Relief & Injury Rehab</h3>
+          <p>Hands-on therapy and guided exercises for back, neck, knee, and shoulder pain.</p>
+          <div class="service-card-tag">→ 60 min sessions</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚶</div>
+          <h3>Mobility & Strength Recovery</h3>
+          <p>Improve movement, balance, and strength after injury, surgery, or long inactivity.</p>
+          <div class="service-card-tag">→ Recovery packages available</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🧘</div>
+          <h3>Wellness & Posture Coaching</h3>
+          <p>Ergonomics, posture correction, stretching routines, and long-term wellness plans.</p>
+          <div class="service-card-tag">→ Individuals & corporate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (borrowed section, fits nicely) -->
+  <section id="how-it-works" style="background: var(--white);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Process</div>
+        <h2>Simple from Start to Finish</h2>
+        <p>Getting mobile physiotherapy is easier than you think.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <h4>Book</h4>
+          <p>Select a service and request a preferred day and time.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <h4>Share Location</h4>
+          <p>Home, office, or a private space within coverage areas.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <h4>I Come to You</h4>
+          <p>Fully equipped for a complete physiotherapy session.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <h4>Follow-Up Plan</h4>
+          <p>Get a simple plan to maintain progress between sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE (your original section, nicer chips/list styling) -->
+  <section id="coverage">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Areas</div>
+        <h2>Service Coverage Areas</h2>
+        <p>Available for home visits in the following regions:</p>
+
+        <ul class="coverage-list">
+          <li>📍 Nairobi</li>
+          <li>📍 Westlands</li>
+          <li>📍 Karen</li>
+          <li>📍 Kilimani</li>
+          <li>📍 Lavington</li>
+          <li>📍 Gigiri</li>
+          <li>📍 Parklands</li>
+          <li>📍 Runda</li>
+        </ul>
+
+        <p style="margin-top:1rem;font-size:0.95rem;color:var(--muted);">
+          If you're outside this range, contact me to discuss options.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING (keep your original wrapper + add beautiful steps; still links to contact.html) -->
+  <section id="booking" style="background: var(--white);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Booking</div>
+        <h2>Book a Mobile Session</h2>
+        <p>Choose a time and location that works for you. I bring the clinic to your home or office.</p>
+      </div>
+
+      <div class="booking-wrapper">
+        <p><strong>How it works:</strong></p>
+
+        <div class="booking-steps">
+          <div class="booking-step">
+            <span class="booking-step-icon">🧾</span>
+            <div><strong>Select a service</strong><span>Choose what you need support with</span></div>
+          </div>
+          <div class="booking-step">
+            <span class="booking-step-icon">📅</span>
+            <div><strong>Pick a time</strong><span>We’ll confirm availability</span></div>
+          </div>
+          <div class="booking-step">
+            <span class="booking-step-icon">📍</span>
+            <div><strong>Share your location</strong><span>Home or office within coverage</span></div>
+          </div>
+          <div class="booking-step">
+            <span class="booking-step-icon">✅</span>
+            <div><strong>Appointment confirmed</strong><span>Arrival details sent to you</span></div>
+          </div>
+        </div>
+
+        <p style="margin-top:0.5rem;color:var(--muted);">
+          Prefer a calendar view? Use the booking page below.
+        </p>
+
+        <p style="margin-top:1rem;">
+          <a class="btn-outline" href="contact.html">Open Booking Calendar</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES placeholder (keeps your nav anchor working) -->
+  <section id="blog">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Resources</div>
+        <h2>Helpful Tips & Guides</h2>
+        <p>Coming soon: posture tips, recovery guides, stretches, and wellness education.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (your simple contact form stays) -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Contact</div>
+        <h2>Get in Touch</h2>
+        <p>You can message me with any questions before booking.</p>
+      </div>
+
+      <form class="contact-form">
+        <label for="location">Your Location for the Session</label>
+        <input id="location" type="text" placeholder="e.g. Karen, Nairobi" required />
+      </form>
+      <p style="font-size:0.85rem;margin-top:0.5rem;text-align:center;color:var(--muted);">
+        *Full address is collected after booking
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER (borrowed grid footer; keeps your brand clean) -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>Dr. Kibibi Mjomba — Nurtured</strong>
+          <p>
+            Mobile physiotherapy and wellness services across Nairobi. Bringing expert, personalized care to your home,
+            office, or wherever you need it most.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How it Works</a></li>
+            <li><a href="#coverage">Areas</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Brand</h4>
+          <ul>
+            <li><a href="#home">Nurtured</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="#blog">Resources</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Dr. Kibibi Mjomba — Mobile Physiotherapy & Wellness, Nairobi</span>
+        <span style="color:var(--primary);font-weight:800;">Nurtured</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
