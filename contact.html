@@ -1,239 +1,808 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact & Booking | Dr. Kibibi Mjomba</title>
+  <title>Contact & Book | Dr. Kibibi Mjomba — Nurtured Stretch Therapy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book a mobile physiotherapy session and contact Dr. Kibibi Mjomba via WhatsApp." />
+  <meta name="description" content="Book a stretch therapy session or send an enquiry to Dr. Kibibi Mjomba. Mobile sessions across Nairobi." />
 
   <style>
-    :root {
-      --primary: #1b8a7a;
-      --primary-dark: #146457;
-      --accent: #f1b44c;
-      --bg: #f6f8fa;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --white: #ffffff;
-      --border: #e5e7eb;
-      --max-width: 1100px;
-      --radius-lg: 16px;
-      --radius-md: 10px;
-      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+    @font-face {
+      font-family: "Gill Sans MT";
+      src: local("Gill Sans MT"), local("GillSansMT");
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Gill Sans MT', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+    :root {
+      --primary:      #1b8a7a;
+      --primary-dark: #146457;
+      --accent:       #f1b44c;
+      --bg:           #f6f8fa;
+      --text:         #1f2933;
+      --muted:        #6b7280;
+      --white:        #ffffff;
+      --border:       #e5e7eb;
+      --max-width:    1100px;
+      --radius-lg:    16px;
+      --radius-md:    10px;
+      --shadow-soft:  0 10px 30px rgba(15, 23, 42, 0.07);
+      --shadow-strong:0 14px 40px rgba(15, 23, 42, 0.11);
+      --ring:         0 0 0 4px rgba(27, 138, 122, 0.12);
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Gill Sans MT", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font-family: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ════════════════════════════
+       NAV
+    ════════════════════════════ */
     header {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(246, 248, 250, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(246, 248, 250, 0.96);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(229, 231, 235, 0.7);
     }
+
     .nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0.75rem 1.5rem; max-width: var(--max-width); margin: 0 auto;
+      padding: 0.75rem 1.5rem; max-width: var(--max-width); margin: 0 auto; gap: 1rem;
     }
-    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.05rem; }
-    .nav-logo-badge {
-      width: 34px; height: 34px; border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #fef9c3, #1b8a7a);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: 0.85rem; font-weight: 800;
+
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; min-width: 220px; }
+
+    .nav-badge {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white); display: grid; place-items: center;
+      font-weight: 900; font-size: 0.9rem; letter-spacing: 1px;
+      box-shadow: 0 5px 16px rgba(27,138,122,0.28);
+      border: 1px solid rgba(255,255,255,0.6); flex-shrink: 0;
     }
-    .nav-links { display: flex; gap: 1.2rem; font-size: 0.95rem; align-items: center; }
-    .nav-links a { position: relative; padding-bottom: 0.2rem; }
+
+    .nav-name  { font-weight: 900; font-size: 0.97rem; color: #111827; line-height: 1.15; }
+    .nav-sub   { font-size: 0.68rem; color: var(--muted); }
+
+    .nav-links { display: flex; gap: 1.1rem; font-size: 0.92rem; align-items: center; }
+
+    .nav-links a {
+      position: relative; padding-bottom: 0.18rem;
+      color: var(--muted); font-weight: 600; transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
     .nav-links a::after {
       content: ""; position: absolute; left: 0; bottom: 0;
-      width: 0; height: 2px; background: var(--primary); transition: width 0.2s ease;
-    }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta {
-      padding: 0.45rem 0.95rem; border-radius: 999px;
-      border: 1px solid var(--primary); background: var(--primary);
-      color: var(--white); font-size: 0.9rem; font-weight: 600;
+      width: 0; height: 2px; background: var(--primary);
+      border-radius: 4px; transition: width 0.2s;
     }
 
-    main { padding: 3.5rem 0 2rem; }
-    h1, h2, h3 { font-weight: 700; color: #111827; }
-    .tag {
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.42rem 1.05rem; border-radius: 999px;
+      background: var(--primary); color: var(--white);
+      border: 1px solid var(--primary); font-size: 0.88rem; font-weight: 800;
+      box-shadow: 0 4px 12px rgba(27,138,122,0.24);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s; white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark); transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(27,138,122,0.32);
+    }
+
+    /* ════════════════════════════
+       PAGE HERO
+    ════════════════════════════ */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 3.5rem 0 2.6rem; text-align: center;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero::before {
+      content: ""; position: absolute; top: -80px; left: 50%;
+      transform: translateX(-50%); width: 680px; height: 380px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(27,138,122,0.07), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
       display: inline-flex; align-items: center; gap: 0.4rem;
       background: #e0f2f1; color: #064e3b;
-      padding: 0.2rem 0.75rem; border-radius: 999px;
-      font-size: 0.78rem; margin-bottom: 0.75rem;
+      padding: 0.22rem 0.9rem; border-radius: 999px;
+      font-size: 0.73rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 1rem;
+      border: 1px solid rgba(27,138,122,0.15);
     }
-    .subtitle { color: var(--muted); margin-top: 0.6rem; max-width: 52rem; }
 
-    section { padding: 2.25rem 0; }
+    .hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      color: #111827; line-height: 1.12; margin-bottom: 0.8rem; font-weight: 800;
+    }
 
-    .grid {
+    .hero h1 span { color: var(--primary); }
+
+    .hero p {
+      color: var(--muted); font-size: 0.97rem;
+      max-width: 40rem; margin: 0 auto; line-height: 1.75;
+    }
+
+    /* ════════════════════════════
+       PAGE LAYOUT
+    ════════════════════════════ */
+    .page-layout {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 1.25rem;
-      margin-top: 1.5rem;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      padding-bottom: 5rem;
       align-items: start;
     }
 
-    .card {
+    /* ════════════════════════════
+       LEFT SIDEBAR — INFO CARDS
+    ════════════════════════════ */
+    .info-col {
+      display: flex; flex-direction: column; gap: 1rem;
+      animation: fadeUp 0.55s ease 0.08s both;
+    }
+
+    .info-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.25rem;
+      padding: 1.15rem 1.25rem;
       box-shadow: var(--shadow-soft);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .calendar-wrap {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+    .info-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-strong); }
+
+    .ic-head {
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.45rem;
+    }
+
+    .ic-icon {
+      width: 36px; height: 36px; border-radius: 9px; background: #e0f2f1;
+      display: grid; place-items: center; font-size: 1.05rem;
+      border: 1px solid rgba(27,138,122,0.12); flex-shrink: 0;
+    }
+
+    .info-card h3 { font-size: 0.88rem; font-weight: 800; color: #111827; }
+
+    .info-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    .ic-value {
+      display: block; font-size: 0.88rem; font-weight: 700;
+      color: var(--primary-dark); margin-top: 0.18rem;
+      transition: color 0.2s;
+    }
+
+    .ic-value:hover { color: var(--primary); }
+
+    .hours-grid {
+      display: grid; grid-template-columns: 1fr auto; gap: 0.22rem 0.75rem; margin-top: 0.45rem;
+    }
+
+    .hours-grid span { font-size: 0.8rem; }
+    .hours-grid span:nth-child(odd)  { color: var(--muted); }
+    .hours-grid span:nth-child(even) { font-weight: 700; color: #111827; text-align: right; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+
+    .chip {
+      background: #e0f2f1; color: #064e3b;
+      padding: 0.15rem 0.55rem; border-radius: 999px;
+      font-size: 0.68rem; font-weight: 600;
+      border: 1px solid rgba(27,138,122,0.12);
+    }
+
+    /* ════════════════════════════
+       RIGHT COLUMN — MAIN CARD
+    ════════════════════════════ */
+    .main-card {
+      background: var(--white);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-strong);
+      position: relative; overflow: hidden;
+      animation: fadeUp 0.55s ease 0.14s both;
+    }
+
+    /* Top gradient bar */
+    .main-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--primary), #2cc4ae, var(--accent));
+    }
+
+    /* ─ TAB SWITCHER ─ */
+    .tab-bar {
+      display: flex; border-bottom: 1px solid var(--border);
+      padding: 0 1.75rem; padding-top: 0.5rem; gap: 0;
+    }
+
+    .tab-btn {
+      padding: 0.85rem 1.25rem 0.75rem;
+      font-size: 0.88rem; font-weight: 800; color: var(--muted);
+      background: none; border: none; border-bottom: 2.5px solid transparent;
+      cursor: pointer; transition: color 0.2s, border-color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-bottom: -1px;
+    }
+
+    .tab-btn:hover { color: var(--primary); }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* ─ TAB PANELS ─ */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ════ BOOKING PANEL ════ */
+    .booking-panel { padding: 1.5rem 1.75rem 1.75rem; }
+
+    .panel-intro { margin-bottom: 1.2rem; }
+    .panel-intro h2 { font-size: 1.1rem; font-weight: 900; color: #111827; margin-bottom: 0.25rem; }
+    .panel-intro p  { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+    /* Step pills */
+    .steps-row {
+      display: flex; gap: 0; margin-bottom: 1.25rem; position: relative;
+    }
+
+    .steps-row::before {
+      content: ""; position: absolute; top: 18px; left: 18px; right: 18px; height: 1.5px;
+      background: var(--border); z-index: 0;
+    }
+
+    .step-pill {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      gap: 0.3rem; position: relative; z-index: 1;
+    }
+
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--white);
+      border: 2px solid rgba(27,138,122,0.3); display: grid; place-items: center;
+      font-size: 0.8rem; font-weight: 900; color: var(--primary);
+      box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+    }
+
+    .step-pill span { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-align: center; line-height: 1.3; }
+
+    /* Calendar + sidebar grid */
+    .calendar-grid {
+      display: grid; grid-template-columns: 1fr 220px; gap: 1.1rem; align-items: start;
+    }
+
+    .cal-wrap {
+      border-radius: var(--radius-md); overflow: hidden;
+      border: 1px solid var(--border); box-shadow: var(--shadow-soft);
       background: var(--white);
     }
-    iframe.calendar {
-      width: 100%;
-      height: 680px;
-      border: 0;
-      display: block;
+
+    .cal-wrap iframe {
+      width: 100%; height: 480px; border: 0; display: block;
     }
 
-    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
-    .btn-primary, .btn-outline {
-      border-radius: 999px;
-      padding: 0.7rem 1.2rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      display: inline-block;
-      text-align: center;
-      cursor: pointer;
-    }
-    .btn-primary { background: var(--primary); color: var(--white); border: 1px solid var(--primary); }
-    .btn-outline { background: transparent; color: var(--primary-dark); border: 1px solid rgba(20, 100, 87, 0.3); }
-
-    .small { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
-    ul { margin-left: 1.1rem; margin-top: 0.7rem; }
-    li { margin: 0.25rem 0; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.4rem 0 1.1rem;
-      font-size: 0.82rem;
-      color: var(--muted);
+    /* WhatsApp confirm block */
+    .wa-block {
+      display: flex; flex-direction: column; gap: 0.75rem;
     }
 
-    /* Floating WhatsApp button (optional) */
+    .wa-cta-card {
+      background: linear-gradient(145deg, #ecfdf5, #d1fae5);
+      border: 1px solid #a7f3d0;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+    }
+
+    .wa-cta-card h4 { font-size: 0.88rem; font-weight: 900; color: #111827; margin-bottom: 0.3rem; }
+    .wa-cta-card p  { font-size: 0.78rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.8rem; }
+
+    .btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; padding: 0.8rem 1rem; border-radius: 999px;
+      background: var(--primary); color: var(--white);
+      font-size: 0.88rem; font-weight: 900;
+      border: none; cursor: pointer; text-decoration: none;
+      box-shadow: 0 5px 16px rgba(27,138,122,0.28);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .btn-wa:hover {
+      background: var(--primary-dark); color: var(--white);
+      transform: translateY(-1px); box-shadow: 0 8px 22px rgba(27,138,122,0.36);
+    }
+
+    .privacy-note {
+      font-size: 0.74rem; color: var(--muted); line-height: 1.5;
+      padding: 0.55rem 0.7rem; background: rgba(255,255,255,0.55);
+      border-radius: var(--radius-md); border: 1px solid rgba(27,138,122,0.1);
+      margin-top: 0.6rem;
+    }
+
+    /* Coverage mini card */
+    .coverage-mini {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 0.9rem 1rem;
+    }
+
+    .coverage-mini h4 { font-size: 0.82rem; font-weight: 800; color: #111827; margin-bottom: 0.45rem; }
+
+    .coverage-mini .chips { gap: 0.3rem; }
+
+    .coverage-mini p { font-size: 0.74rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+
+    /* ════ ENQUIRY PANEL ════ */
+    .enquiry-panel { padding: 1.5rem 1.75rem 1.75rem; }
+
+    .form-head { margin-bottom: 1.2rem; }
+    .form-head h2 { font-size: 1.1rem; font-weight: 900; color: #111827; margin-bottom: 0.2rem; }
+    .form-head p  { font-size: 0.85rem; color: var(--muted); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label { font-size: 0.8rem; font-weight: 800; color: #374151; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border); outline: none;
+      font-size: 0.9rem; background: var(--bg); color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.85rem center;
+      padding-right: 2.2rem; cursor: pointer;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary); background: var(--white); box-shadow: var(--ring);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #b8c0cc; }
+
+    .btn-submit {
+      width: 100%; padding: 0.85rem 1.5rem; border-radius: 999px;
+      background: var(--primary); color: var(--white);
+      font-size: 0.97rem; font-weight: 900; border: none; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(27,138,122,0.26);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 0.65rem; letter-spacing: 0.01em;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark); transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(27,138,122,0.34);
+    }
+
+    .form-note {
+      font-size: 0.76rem; color: var(--muted);
+      text-align: center; margin-top: 0.75rem; line-height: 1.5;
+    }
+
+    .form-note a { color: var(--primary); font-weight: 800; }
+
+    /* Success */
+    .success-state {
+      display: none; text-align: center;
+      padding: 3rem 1.5rem; animation: fadeUp 0.45s ease both;
+    }
+
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #e0f2f1; border: 2px solid rgba(27,138,122,0.2);
+      display: grid; place-items: center; font-size: 1.9rem; margin: 0 auto 1rem;
+    }
+
+    .success-state h3 { font-size: 1.35rem; color: #111827; margin-bottom: 0.4rem; }
+    .success-state p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+
+    /* ════════════════════════════
+       FLOATING WHATSAPP
+    ════════════════════════════ */
     .wa-float {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 40;
-      background: #1b8a7a;
-      color: #fff;
-      border-radius: 999px;
-      padding: 0.8rem 1rem;
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-      font-weight: 800;
+      position: fixed; right: 18px; bottom: 18px; z-index: 50;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.7rem 1.1rem; border-radius: 999px;
+      background: var(--primary); color: var(--white);
+      font-weight: 900; font-size: 0.87rem;
+      box-shadow: 0 10px 28px rgba(27,138,122,0.38);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: background 0.2s, transform 0.15s;
     }
 
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
+    .wa-float:hover { background: var(--primary-dark); transform: translateY(-2px); color: var(--white); }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border); background: var(--white);
+      padding: 1.75rem 0 1.4rem;
+    }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--muted); gap: 0.75rem; flex-wrap: wrap;
+    }
+
+    /* ════════════════════════════
+       ANIMATIONS
+    ════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+    @media (max-width: 980px) {
       .nav-links { display: none; }
-      iframe.calendar { height: 720px; }
+      .page-layout { grid-template-columns: 1fr; }
+      .calendar-grid { grid-template-columns: 1fr; }
+      .cal-wrap iframe { height: 560px; }
+      .wa-block { flex-direction: row; flex-wrap: wrap; }
+      .wa-cta-card, .coverage-mini { flex: 1 1 240px; }
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .steps-row { gap: 0.5rem; }
+      .steps-row::before { display: none; }
+      .booking-panel, .enquiry-panel { padding: 1.25rem 1.1rem 1.5rem; }
+      .tab-bar { padding: 0 1.1rem; }
+      .cal-wrap iframe { height: 500px; }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- ════ NAV ════ -->
   <header>
     <nav class="nav">
       <div class="nav-logo">
-        <div class="nav-logo-badge">KJ</div>
+        <div class="nav-badge">KJ</div>
         <div>
-          <div>Dr. Kibibi Mjomba</div>
-          <small style="font-size:0.7rem;color:#6b7280;">Mobile Physio & Wellness</small>
+          <div class="nav-name">Dr. Kibibi Mjomba</div>
+          <div class="nav-sub">Stretch Therapy & Wellness</div>
         </div>
       </div>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="index.html#about">About</a>
         <a href="index.html#services">Services</a>
+        <a href="index.html#how-it-works">How it Works</a>
+        <a href="index.html#coverage">Areas</a>
         <a href="testimonials.html">Testimonials</a>
+        <a href="index.html#blog">Resources</a>
         <a href="contact.html">Contact</a>
       </div>
-      <a href="#book" class="nav-cta">Book now</a>
+
+      <a href="#book" class="nav-cta">Book a Stretch</a>
     </nav>
   </header>
 
-  <main>
+  <!-- ════ HERO ════ -->
+  <section class="hero">
     <div class="container">
-      <span class="tag">📅 Book • 💬 WhatsApp • 🏠 Mobile Visits</span>
-      <h1>Contact & Booking</h1>
-      <p class="subtitle">
-        Step 1: Choose a time on the calendar. Step 2: Message on WhatsApp to confirm your location and service details.
-      </p>
+      <div class="eyebrow">📬 Contact & Booking</div>
+      <h1>Let's Get You<br /><span>Moving Freely.</span></h1>
+      <p>Pick a slot on the calendar and confirm via WhatsApp — or send an enquiry below and I'll respond within 24 hours.</p>
+    </div>
+  </section>
 
-      <section id="book">
-        <div class="grid">
-          <!-- Calendar -->
-          <div class="calendar-wrap">
-            <!-- Replace the src with your calendar embed link -->
-            <iframe
-              class="calendar"
-              src="https://calendar.app.google/yas9yXYnfLexwDvx9"
-              title="Booking Calendar"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+  <!-- ════ MAIN LAYOUT ════ -->
+  <section style="padding: 0 0 1rem;" id="book">
+    <div class="container">
+      <div class="page-layout">
+
+        <!-- ── LEFT: INFO SIDEBAR ── -->
+        <aside class="info-col">
+
+          <div class="info-card">
+            <div class="ic-head">
+              <div class="ic-icon">📞</div>
+              <h3>Phone & WhatsApp</h3>
+            </div>
+            <p>Quickest way to reach me</p>
+            <a class="ic-value" href="tel:+254792147126">+254 792 147 126</a>
+            <a class="ic-value" style="margin-top:.3rem;" href="https://wa.me/254792147126" target="_blank" rel="noopener">Open WhatsApp →</a>
           </div>
 
-          <!-- Sidebar -->
-          <div class="card">
-            <h2>How Booking Works</h2>
-            <ul>
-              <li>Select a suitable slot on the calendar.</li>
-              <li>Send a WhatsApp message to confirm your exact location.</li>
-              <li>We’ll confirm your service type and arrival time.</li>
-            </ul>
+          <div class="info-card">
+            <div class="ic-head">
+              <div class="ic-icon">📧</div>
+              <h3>Email</h3>
+            </div>
+            <p>For detailed enquiries or corporate bookings</p>
+            <a class="ic-value" href="mailto:hello@nurtured.co.ke">hello@nurtured.co.ke</a>
+          </div>
 
-            <div class="btn-row">
-              <!-- WhatsApp link: replace number and message -->
-              <a class="btn-primary"
-                 href="https://wa.me/254792147126?text=Hi%20Dr.%20Kibibi%2C%20I%20just%20booked%20a%20slot%20and%20would%20like%20to%20confirm%20my%20location%20and%20service.%20My%20area%20is%3A%20____.%20Preferred%20service%3A%20____."
-                 target="_blank" rel="noopener">
-                WhatsApp to Confirm
-              </a>
+          <div class="info-card">
+            <div class="ic-head">
+              <div class="ic-icon">🕐</div>
+              <h3>Session Hours</h3>
+            </div>
+            <div class="hours-grid">
+              <span>Mon – Fri</span><span>7am – 7pm</span>
+              <span>Saturday</span><span>8am – 4pm</span>
+              <span>Sunday</span><span>By request</span>
+            </div>
+          </div>
 
-              <a class="btn-outline" href="index.html#coverage">
-                Check Coverage Areas
-              </a>
+          <div class="info-card">
+            <div class="ic-head">
+              <div class="ic-icon">📍</div>
+              <h3>Coverage Areas</h3>
+            </div>
+            <p>Currently serving:</p>
+            <div class="chips">
+              <span class="chip">Nairobi CBD</span>
+              <span class="chip">Westlands</span>
+              <span class="chip">Karen</span>
+              <span class="chip">Kilimani</span>
+              <span class="chip">Lavington</span>
+              <span class="chip">Gigiri</span>
+              <span class="chip">Parklands</span>
+              <span class="chip">Runda</span>
+            </div>
+            <p style="margin-top:.55rem;font-size:.78rem;">Outside this range? Still reach out — let's find a way.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="ic-head">
+              <div class="ic-icon">🤸</div>
+              <h3>What to Expect</h3>
+            </div>
+            <p>All I need is a mat-sized clear space. I arrive fully equipped — no preparation needed on your side.</p>
+          </div>
+
+        </aside>
+
+        <!-- ── RIGHT: TABBED MAIN CARD ── -->
+        <div class="main-card">
+
+          <!-- Tab bar -->
+          <div class="tab-bar" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true"
+              aria-controls="panel-book" onclick="switchTab('book', this)">
+              📅 Book a Session
+            </button>
+            <button class="tab-btn" role="tab" aria-selected="false"
+              aria-controls="panel-enquiry" onclick="switchTab('enquiry', this)">
+              ✉️ Send an Enquiry
+            </button>
+          </div>
+
+          <!-- ─ BOOKING PANEL ─ -->
+          <div id="panel-book" class="tab-panel active booking-panel" role="tabpanel">
+
+            <div class="panel-intro">
+              <h2>Choose Your Session Time</h2>
+              <p>Select an available slot, then confirm your location and preferred service via WhatsApp.</p>
             </div>
 
-            <p class="small">
-              <strong>Privacy:</strong> Please don’t share sensitive medical details on WhatsApp.
-              You can describe symptoms generally, and detailed information can be discussed during the session.
-            </p>
+            <!-- Steps -->
+            <div class="steps-row">
+              <div class="step-pill">
+                <div class="step-num">1</div>
+                <span>Pick a slot</span>
+              </div>
+              <div class="step-pill">
+                <div class="step-num">2</div>
+                <span>WhatsApp me</span>
+              </div>
+              <div class="step-pill">
+                <div class="step-num">3</div>
+                <span>You're confirmed</span>
+              </div>
+            </div>
 
-            <p class="small">
-              <strong>Serving:</strong> Nairobi, Westlands, Karen, Kilimani, Lavington, Gigiri, Parklands (and nearby on request).
-            </p>
+            <!-- Calendar + sidebar -->
+            <div class="calendar-grid">
+
+              <div class="cal-wrap">
+                <iframe
+                  src="https://calendar.app.google/yas9yXYnfLexwDvx9"
+                  title="Booking Calendar"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+
+              <div class="wa-block">
+
+                <div class="wa-cta-card">
+                  <h4>💬 Confirm via WhatsApp</h4>
+                  <p>After selecting your slot, tap below and share your location and preferred service.</p>
+                  <a class="btn-wa"
+                     href="https://wa.me/254792147126?text=Hi%20Dr.%20Kibibi%2C%20I%20just%20selected%20a%20slot%20on%20the%20calendar%20%F0%9F%97%93%20and%20would%20like%20to%20confirm.%20%0A%F0%9F%93%8D%20My%20area%3A%20___%0A%F0%9F%A4%B8%20Service%3A%20___"
+                     target="_blank" rel="noopener">
+                    💬 &nbsp;WhatsApp to Confirm
+                  </a>
+                  <div class="privacy-note">
+                    🔒 Keep details general here — symptoms and health specifics are discussed privately during the session.
+                  </div>
+                </div>
+
+                <div class="coverage-mini">
+                  <h4>📍 Service Areas</h4>
+                  <div class="chips">
+                    <span class="chip">Nairobi CBD</span>
+                    <span class="chip">Westlands</span>
+                    <span class="chip">Karen</span>
+                    <span class="chip">Kilimani</span>
+                    <span class="chip">Lavington</span>
+                    <span class="chip">Gigiri</span>
+                    <span class="chip">Parklands</span>
+                    <span class="chip">Runda</span>
+                  </div>
+                  <p>Not on this list? <a href="index.html#coverage" style="color:var(--primary);font-weight:700;">Check the map</a> or switch to the enquiry tab.</p>
+                </div>
+
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
-  </main>
 
-  <!-- Optional floating WhatsApp button -->
+          <!-- ─ ENQUIRY PANEL ─ -->
+          <div id="panel-enquiry" class="tab-panel enquiry-panel" role="tabpanel">
+
+            <div id="form-view">
+              <div class="form-head">
+                <h2>Send an Enquiry</h2>
+                <p>Have a question before booking? I'll get back to you within 24 hours.</p>
+              </div>
+
+              <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-grid">
+
+                  <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input id="fname" type="text" placeholder="Amara" autocomplete="given-name" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input id="lname" type="text" placeholder="Oduya" autocomplete="family-name" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone">Phone / WhatsApp <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+                    <input id="phone" type="tel" placeholder="+254 7XX XXX XXX" autocomplete="tel" />
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="topic">What's your enquiry about?</label>
+                    <select id="topic" required>
+                      <option value="" disabled selected>Select a topic</option>
+                      <option>Assisted Stretch Therapy</option>
+                      <option>Flexibility & Mobility Programmes</option>
+                      <option>Corporate & Team Wellness</option>
+                      <option>Pricing & Packages</option>
+                      <option>Coverage Areas</option>
+                      <option>Something else</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="message">Your Message</label>
+                    <textarea id="message"
+                      placeholder="Ask me anything — what to expect, whether stretch therapy is right for you, areas of tightness you're dealing with…"
+                      required></textarea>
+                  </div>
+
+                </div>
+
+                <button type="submit" class="btn-submit">Send Enquiry →</button>
+                <p class="form-note">
+                  For urgent requests, <a href="https://wa.me/254792147126" target="_blank" rel="noopener">WhatsApp me directly</a>.
+                  Ready to book? <button type="button" onclick="switchTab('book', document.querySelector('.tab-btn'))" style="background:none;border:none;cursor:pointer;color:var(--primary);font-weight:800;font-size:inherit;padding:0;">Use the booking tab ↑</button>
+                </p>
+              </form>
+            </div>
+
+            <div class="success-state" id="success-view">
+              <div class="success-icon">🌿</div>
+              <h3>Message received!</h3>
+              <p>Thanks for reaching out. I'll get back to you within 24 hours — looking forward to chatting.</p>
+              <p style="margin-top:.7rem;">If it's urgent, <a href="https://wa.me/254792147126" style="color:var(--primary);font-weight:700;">send a WhatsApp</a> directly.</p>
+            </div>
+
+          </div>
+        </div><!-- /.main-card -->
+
+      </div><!-- /.page-layout -->
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp -->
   <a class="wa-float"
-     href="https://wa.me/254792147126?text=Hi%20Dr.%20Kibibi%2C%20I%20want%20to%20book%20a%20mobile%20physio%20session.%20My%20area%20is%3A%20____."
+     href="https://wa.me/254792147126?text=Hi%20Dr.%20Kibibi%2C%20I%27d%20like%20to%20book%20a%20stretch%20therapy%20session.%20My%20area%3A%20___."
      target="_blank" rel="noopener">
     💬 WhatsApp
   </a>
 
+  <!-- ════ FOOTER ════ -->
   <footer>
-    <div class="container">© 2026 Dr. Kibibi Mjomba — Mobile Physiotherapy & Wellness</div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 Dr. Kibibi Mjomba — Stretch Therapy & Wellness, Nairobi</span>
+        <span style="color:var(--primary);font-weight:800;">Nurtured</span>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    function switchTab(name, btn) {
+      // Update buttons
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      // Find the correct tab button if called from the form note link
+      const targetBtn = btn.classList?.contains('tab-btn')
+        ? btn
+        : document.querySelector(`.tab-btn[onclick*="'${name}'"]`);
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+        targetBtn.setAttribute('aria-selected', 'true');
+      }
+
+      // Update panels
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('panel-' + name).classList.add('active');
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-view').style.display = 'none';
+      document.getElementById('success-view').style.display = 'block';
+    }
+  </script>
+
 </body>
 </html>
