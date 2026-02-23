@@ -702,6 +702,154 @@
       box-shadow: 0 0 0 4px rgba(27, 138, 122, 0.12);
     }
 
+    /* ── WHY NURTURED (honest pitch) ── */
+    .why-section {
+      background: var(--white);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .why-problem h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .why-problem-lead {
+      font-size: 1.02rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .why-reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .why-reason {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .why-reason-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* The solution side */
+    .why-solution {
+      position: sticky;
+      top: 5rem;
+    }
+
+    .why-solution-card {
+      background: linear-gradient(145deg, #e8faf7, #f0fdf9);
+      border: 1px solid rgba(27, 138, 122, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(27, 138, 122, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-solution-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), #2cc4ae);
+    }
+
+    .why-solution-tagline {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #111827;
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+
+    .why-solution-tagline span {
+      color: var(--primary);
+    }
+
+    .why-solution-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      line-height: 1.6;
+    }
+
+    .why-outcomes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .why-outcome {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .why-outcome-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .why-outcome strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+      color: #111827;
+    }
+
+    .why-outcome p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .why-comes-to-you {
+      background: var(--primary);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--white);
+    }
+
+    .why-comes-to-you-icon { font-size: 1.35rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .why-comes-to-you strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .why-comes-to-you p { font-size: 0.82rem; opacity: 0.88; line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-solution { position: static; }
+    }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -878,7 +1026,6 @@
       <a href="#about"        onclick="closeMenu()">👤 About</a>
       <a href="#services"     onclick="closeMenu()">🤸 Services</a>
       <a href="#how-it-works" onclick="closeMenu()">📋 How it Works</a>
-      <a href="#coverage"     onclick="closeMenu()">📍 Areas</a>
       <a href="testimonials.html" onclick="closeMenu()">⭐ Testimonials</a>
       <a href="#blog"         onclick="closeMenu()">📚 Resources</a>
       <a href="contact.html"  onclick="closeMenu()">✉️ Contact Me</a>
@@ -900,6 +1047,7 @@
           </div>
 
           <div class="tag">🌿 Stretch Therapy · Nairobi</div>
+          <div class="tag" style="background:#fdf2f8;color:#86198f;border-color:rgba(134,25,143,0.18);">♀ Women Only Service</div>
 
           <h1>
             Feel Longer, Move Freer,<br />
@@ -907,8 +1055,8 @@
           </h1>
 
           <p class="hero-subtitle">
-            A physiotherapist-led stretch therapy practice offering professional assisted stretching in the comfort of your home or office.
-            Release chronic tightness, restore your range of motion, and move through life the way your body was designed to — wherever you are.
+            A physiotherapist-led stretch therapy practice offering professional assisted stretching for women — in the comfort of your home or office across Nairobi.
+            Release chronic tightness, restore your range of motion, and move through life the way your body was designed to.
           </p>
 
           <div class="hero-actions">
@@ -938,21 +1086,110 @@
             <span class="hero-info-icon">🌍</span>
             <div>
               <strong>Currently Serving</strong>
-              <div class="area-chips">
-                <span class="chip">Nairobi</span>
-                <span class="chip">Westlands</span>
-                <span class="chip">Karen</span>
-                <span class="chip">Kilimani</span>
-                <span class="chip">Lavington</span>
-                <span class="chip">Gigiri</span>
-                <span class="chip">Parklands</span>
-              </div>
+              <p>Nairobi & surrounding areas</p>
+            </div>
+          </div>
+
+          <div class="hero-info-row">
+            <span class="hero-info-icon">♀️</span>
+            <div>
+              <strong>Women Only</strong>
+              <p>Nurtured is a women-only service, designed to be a safe, comfortable, and supportive experience.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- WHY NURTURED -->
+  <section id="why" class="why-section">
+    <div class="container">
+      <div class="why-grid">
+
+        <!-- Left: The honest problem -->
+        <div class="why-problem">
+          <div class="section-eyebrow">Let's Be Honest</div>
+          <h2>Most of us know we should stretch. Most of us don't.</h2>
+          <p class="why-problem-lead">
+            And it's not laziness. There are real reasons stretching keeps falling off the list — and they matter.
+          </p>
+
+          <div class="why-reasons">
+            <div class="why-reason">
+              <span class="why-reason-icon">⏱️</span>
+              <span><strong>No time for it.</strong> Stretching takes time most of us don't have, so it gets skipped — again and again.</span>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-icon">🤷</span>
+              <span><strong>Underestimated.</strong> It's easy to dismiss how important stretching is for moving freely as we age — until the stiffness becomes impossible to ignore.</span>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-icon">😣</span>
+              <span><strong>Uncomfortable to hold.</strong> Staying still in an uncomfortable position while trying to stay relaxed? It's harder than it sounds.</span>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-icon">⚠️</span>
+              <span><strong>Easy to do it wrong.</strong> Poor form and incorrect stretching techniques don't just reduce results — they can lead to real injuries.</span>
+            </div>
+            <div class="why-reason">
+              <span class="why-reason-icon">🚫</span>
+              <span><strong>Some stretches just can't be done solo.</strong> Certain deep, targeted releases simply aren't possible without a second pair of hands — no matter how hard you try.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: The solution -->
+        <div class="why-solution">
+          <div class="why-solution-card">
+            <p class="why-solution-tagline">That's where <span>Nurtured</span> comes in.</p>
+            <p class="why-solution-sub">You relax. We do the work — guiding you into safe, effective stretches that go deeper than you could reach alone. All you have to do is show up and give us the time.</p>
+
+            <div class="why-outcomes">
+              <div class="why-outcome">
+                <span class="why-outcome-icon">⚡</span>
+                <div>
+                  <strong>Immediate</strong>
+                  <p>Instant looseness, deep relaxation, and that <em>"ahh, my body can breathe"</em> feeling. Walk out calmer than you arrived.</p>
+                </div>
+              </div>
+              <div class="why-outcome">
+                <span class="why-outcome-icon">📈</span>
+                <div>
+                  <strong>Over time</strong>
+                  <p>Progressive flexibility gains, better mobility, healthier joints, and the confidence to stay active and pain-free as you age.</p>
+                </div>
+              </div>
+              <div class="why-outcome">
+                <span class="why-outcome-icon">✅</span>
+                <div>
+                  <strong>Zero hassle</strong>
+                  <p>Expert guidance means deeper results, no risk of poor form or injury, and sessions that fit your schedule.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="why-comes-to-you">
+              <span class="why-comes-to-you-icon">🏠</span>
+              <div>
+                <strong>The best part? We come to you.</strong>
+                <p>Professional assisted stretch therapy right to your home, office, or wherever you are in Nairobi — so you save time and energy on travel.</p>
+              </div>
+            </div>
+
+            <div class="why-comes-to-you" style="background:#86198f;margin-top:0.75rem;">
+              <span class="why-comes-to-you-icon">♀️</span>
+              <div>
+                <strong>Women only.</strong>
+                <p>Nurtured is exclusively for women — a safe, comfortable, and fully supported environment for every session.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
@@ -1064,32 +1301,6 @@
     </div>
   </section>
 
-  <!-- COVERAGE -->
-  <section id="coverage">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Areas</div>
-        <h2>Service Coverage Areas</h2>
-        <p>Available for in-home and on-site stretch sessions in the following areas:</p>
-
-        <ul class="coverage-list">
-          <li>📍 Nairobi</li>
-          <li>📍 Westlands</li>
-          <li>📍 Karen</li>
-          <li>📍 Kilimani</li>
-          <li>📍 Lavington</li>
-          <li>📍 Gigiri</li>
-          <li>📍 Parklands</li>
-          <li>📍 Runda</li>
-        </ul>
-
-        <p style="margin-top:1rem;font-size:0.95rem;color:var(--muted);">
-          Outside this range? Get in touch — I'm happy to discuss options.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- BOOKING -->
   <section id="booking" style="background: var(--white);">
     <div class="container">
@@ -1180,7 +1391,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#how-it-works">How it Works</a></li>
-            <li><a href="#coverage">Areas</a></li>
             <li><a href="#booking">Book</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
