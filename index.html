@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <title>Dr. Kibibi Mjomba | Stretch Therapy & Wellness Expert</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Mobile stretch therapy and wellness services by Dr. Kibibi Mjomba. In-home assisted stretching for flexibility, pain relief, recovery, and long-term mobility."
-  />
+  <meta name="description" content="Mobile stretch therapy and wellness services by Dr. Kibibi Mjomba. In-home assisted stretching for flexibility, pain relief, recovery, and long-term mobility." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     @font-face {
@@ -36,7 +36,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Gill Sans MT", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Gill Sans MT", "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -103,7 +103,6 @@
     .nav-doctor-name { font-weight: 900; color: #111827; font-size: 1rem; }
     .nav-subtitle { font-size: 0.7rem; color: var(--muted); display: block; margin-top: 0.05rem; }
 
-    /* Desktop nav links */
     .nav-links {
       display: flex;
       gap: 1.15rem;
@@ -153,7 +152,6 @@
       box-shadow: 0 6px 18px rgba(27, 138, 122, 0.32);
     }
 
-    /* ── HAMBURGER BUTTON ── */
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -179,19 +177,10 @@
       transform-origin: center;
     }
 
-    /* Hamburger open state */
-    .nav-hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .nav-hamburger.open span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    .nav-hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ── MOBILE DRAWER ── */
     .mobile-menu {
       display: none;
       flex-direction: column;
@@ -205,10 +194,7 @@
       transition: max-height 0.35s ease, padding 0.35s ease;
     }
 
-    .mobile-menu.open {
-      max-height: 480px;
-      padding: 1rem 1.5rem 1.5rem;
-    }
+    .mobile-menu.open { max-height: 480px; padding: 1rem 1.5rem 1.5rem; }
 
     .mobile-menu a {
       font-size: 1rem;
@@ -244,11 +230,7 @@
       text-align: center;
     }
 
-    .section-header p {
-      margin-top: 0.7rem;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
+    .section-header p { margin-top: 0.7rem; color: var(--muted); font-size: 0.98rem; }
 
     .section-eyebrow {
       display: inline-flex;
@@ -279,77 +261,199 @@
       border: 1px solid rgba(27, 138, 122, 0.15);
     }
 
-    /* ── HERO ── */
+    /* ══════════════════════════════════
+       HERO — CINEMATIC FULL-BLEED
+    ══════════════════════════════════ */
     .hero {
-      padding: 5rem 0 4rem;
       position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -120px; right: -160px;
-      width: 520px; height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(27, 138, 122, 0.07), transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 3rem;
+      min-height: 92vh;
+      display: flex;
       align-items: center;
-      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    /* Full-bleed photo — image visible, text still readable */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0d4a42;
+      background-image:
+        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80&fit=crop&crop=center');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+    }
+
+    /* Separate overlay div — gives precise control over tint strength */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      /* Left side darker so text is legible, right side lighter so photo shows */
+      background: linear-gradient(
+        105deg,
+        rgba(8, 45, 38, 0.82) 0%,
+        rgba(10, 58, 50, 0.68) 40%,
+        rgba(15, 75, 65, 0.42) 65%,
+        rgba(10, 55, 48, 0.28) 100%
+      );
       z-index: 1;
     }
 
-    .hero-brand {
+    /* Subtle vignette for depth */
+    .hero-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 100%);
+    }
+
+
+
+    /* Decorative organic blob shapes */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-orb-1 {
+      width: 600px; height: 600px;
+      right: -100px; top: -150px;
+      background: radial-gradient(circle, rgba(27, 138, 122, 0.3), transparent 65%);
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      left: -80px; bottom: -80px;
+      background: radial-gradient(circle, rgba(241, 180, 76, 0.12), transparent 65%);
+      animation: orbFloat 11s ease-in-out infinite reverse;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.04); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* Left content */
+    .hero-left {
+      animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-brand-strip {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 1.1rem;
+      gap: 0.7rem;
+      margin-bottom: 1.4rem;
     }
 
-    .hero-brand img {
-      height: 74px;
-      width: auto;
+    .hero-brand-strip img,
+    .hero-logo-img {
+      height: 64px;
+      width: 64px;
+      object-fit: contain;
       border-radius: 14px;
-      padding: 8px;
-      background: var(--white);
-      border: 1px solid rgba(229, 231, 235, 0.9);
-      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
     }
 
-    .hero-brand-name strong {
+    .hero-headline .accent-line {
+      color: #5eead4;
       display: block;
-      font-size: 1.05rem;
-      color: #111827;
-      line-height: 1.1;
     }
 
-    .hero-brand-name small {
+    .hero-headline .accent-line-soft {
+      color: #f1b44c; /* warm gold — matches logo accent circle */
       display: block;
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
+      font-style: italic;
     }
 
-    .hero h1 {
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin-bottom: 1rem;
+    .hero-brand-strip-text strong {
+      display: block;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.95);
+      font-weight: 800;
     }
 
-    .hero h1 span { color: var(--primary); }
+    .hero-brand-strip-text small {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+    }
 
-    .hero-subtitle {
-      font-size: 0.98rem;
-      max-width: 33rem;
-      margin-bottom: 1.8rem;
-      color: var(--muted);
-      line-height: 1.75;
+    .hero-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-pill-green {
+      background: rgba(27, 138, 122, 0.35);
+      color: #a7f3d0;
+    }
+
+    .hero-pill-purple {
+      background: rgba(134, 25, 143, 0.35);
+      color: #f0abfc;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-headline .accent-line {
+      color: #5eead4; /* teal highlight */
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      max-width: 32rem;
+      margin-bottom: 2rem;
     }
 
     .hero-actions {
@@ -359,56 +463,244 @@
       align-items: center;
     }
 
-    .btn-primary, .btn-outline {
+    .btn-hero-primary {
       border-radius: 999px;
-      padding: 0.7rem 1.4rem;
-      font-size: 0.95rem;
+      padding: 0.85rem 1.8rem;
+      font-size: 0.97rem;
       font-weight: 800;
       cursor: pointer;
       display: inline-block;
       text-align: center;
       font-family: "Gill Sans MT", sans-serif;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: var(--white);
-      box-shadow: 0 4px 14px rgba(27, 138, 122, 0.28);
-      border: 1px solid var(--primary);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(27, 138, 122, 0.34);
-      border-color: var(--primary-dark);
-    }
-
-    .btn-outline {
-      border: 1.5px solid rgba(20, 100, 87, 0.35);
+      transition: all 0.22s;
+      background: #ffffff;
       color: var(--primary-dark);
-      background: transparent;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.22);
+      border: none;
     }
 
-    .btn-outline:hover {
+    .btn-hero-primary:hover {
       background: #e0f2f1;
-      border-color: var(--primary);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.3);
     }
 
-    /* Hero right card */
-    .hero-info-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+    .btn-hero-outline {
+      border-radius: 999px;
+      padding: 0.85rem 1.8rem;
+      font-size: 0.97rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      font-family: "Gill Sans MT", sans-serif;
+      transition: all 0.22s;
+      background: transparent;
+      color: rgba(255,255,255,0.88);
+      border: 1.5px solid rgba(255,255,255,0.35);
+    }
+
+    .btn-hero-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Floating social proof strip */
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-avatars {
+      display: flex;
+    }
+
+    .hero-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.4);
+      background: linear-gradient(135deg, #2cc4ae, #1b8a7a);
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: white;
+      margin-right: -10px;
+    }
+
+    .hero-avatar:nth-child(2) { background: linear-gradient(135deg, #5eead4, #0d9488); }
+    .hero-avatar:nth-child(3) { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+    .hero-avatar:nth-child(4) { background: linear-gradient(135deg, #f0abfc, #86198f); }
+
+    .hero-social-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.4;
+    }
+
+    .hero-social-text strong {
+      display: block;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.88rem;
+    }
+
+    .hero-stars { color: #fbbf24; font-size: 0.8rem; letter-spacing: 1px; }
+
+    /* Right card */
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
       padding: 1.75rem;
-      box-shadow: var(--shadow-strong);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      animation: heroFadeUp 0.8s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-info-card::before {
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #5eead4, #2cc4ae, #1b8a7a);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 0.9rem;
+      text-align: center;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.7rem;
+      color: #5eead4;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .hero-stat small {
+      display: block;
+      font-size: 0.71rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.25rem;
+    }
+
+    .hero-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+
+    .hero-info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .hero-info-row strong { display: block; margin-bottom: 0.15rem; color: rgba(255,255,255,0.95); }
+    .hero-info-row p { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+
+    .area-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .chip {
+      background: rgba(27,138,122,0.3);
+      color: #a7f3d0;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1px solid rgba(94,234,212,0.2);
+    }
+
+    /* Scroll hint */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: scrollBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.4; }
+      50% { transform: translateX(-50%) translateY(6px); opacity: 0.7; }
+    }
+
+    .hero-scroll-arrow {
+      width: 24px; height: 24px;
+      border-right: 2px solid rgba(255,255,255,0.3);
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      transform: rotate(45deg);
+    }
+
+    /* ── WHY NURTURED ── */
+    .why-section { background: var(--white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .why-problem h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1rem; }
+    .why-problem-lead { font-size: 1.02rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .why-reasons { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .why-reason {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .why-reason-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    .why-solution { position: sticky; top: 5rem; }
+
+    .why-solution-card {
+      background: linear-gradient(145deg, #e8faf7, #f0fdf9);
+      border: 1px solid rgba(27, 138, 122, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(27, 138, 122, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-solution-card::before {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -416,57 +708,44 @@
       background: linear-gradient(90deg, var(--primary), #2cc4ae);
     }
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
-    }
+    .why-solution-tagline { font-size: 1.5rem; font-weight: 900; color: #111827; line-height: 1.25; margin-bottom: 0.4rem; }
+    .why-solution-tagline span { color: var(--primary); }
+    .why-solution-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.6rem; line-height: 1.6; }
 
-    .hero-stat {
-      background: var(--bg);
-      border-radius: var(--radius-md);
-      padding: 0.9rem;
-      text-align: center;
+    .why-outcomes { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.6rem; }
+
+    .why-outcome {
+      background: var(--white);
       border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
     }
 
-    .hero-stat strong {
-      display: block;
-      font-size: 1.6rem;
-      color: var(--primary);
-      line-height: 1;
-    }
+    .why-outcome-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .why-outcome strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; color: #111827; }
+    .why-outcome p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
 
-    .hero-stat small {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    .hero-info-row {
+    .why-comes-to-you {
+      background: var(--primary);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem;
+      gap: 0.75rem;
+      color: var(--white);
     }
 
-    .hero-info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.05rem; }
-    .hero-info-row strong { display: block; margin-bottom: 0.2rem; }
-    .hero-info-row p { color: var(--muted); font-size: 0.83rem; }
+    .why-comes-to-you-icon { font-size: 1.35rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .why-comes-to-you strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .why-comes-to-you p { font-size: 0.82rem; opacity: 0.88; line-height: 1.6; }
 
-    .area-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
-    .chip {
-      background: #e0f2f1;
-      color: #064e3b;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      font-size: 0.73rem;
-      font-weight: 600;
-      border: 1px solid rgba(27, 138, 122, 0.12);
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-solution { position: static; }
     }
 
     /* ── ABOUT ── */
@@ -494,7 +773,7 @@
     .about-photo-caption {
       position: absolute;
       bottom: 1rem; left: 1rem; right: 1rem;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(8px);
       border-radius: 10px;
       padding: 0.7rem 1rem;
@@ -505,12 +784,7 @@
     .about-photo-caption strong { color: var(--primary); display: block; margin-bottom: 0.1rem; }
     .about-content p { color: var(--muted); font-size: 0.97rem; margin-top: 0.8rem; line-height: 1.8; }
 
-    .credentials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.2rem;
-    }
+    .credentials { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
 
     .credential-badge {
       display: flex;
@@ -561,15 +835,7 @@
 
     .service-card h3 { margin-top: 0.2rem; font-size: 1.05rem; }
     .service-card p { margin-top: 0.55rem; color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
-
-    .service-card-tag {
-      margin-top: 1rem;
-      padding-top: 0.8rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.78rem;
-      color: var(--primary);
-      font-weight: 700;
-    }
+    .service-card-tag { margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--primary); font-weight: 700; }
 
     /* ── HOW IT WORKS ── */
     .process-steps {
@@ -609,6 +875,319 @@
 
     .process-step h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
     .process-step p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+    /* ══════════════════════════════════
+       PRICING SECTION — NEW
+    ══════════════════════════════════ */
+    .pricing-section {
+      background: linear-gradient(160deg, #f0fdf9 0%, #e8faf7 50%, #f6f8fa 100%);
+      border-top: 1px solid rgba(27,138,122,0.1);
+      border-bottom: 1px solid rgba(27,138,122,0.1);
+    }
+
+    .pricing-toggle-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.2rem;
+    }
+
+    .pricing-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px;
+      gap: 2px;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+    }
+
+    .pricing-toggle button {
+      border: none;
+      background: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.22s;
+      font-family: "Gill Sans MT", sans-serif;
+    }
+
+    .pricing-toggle button.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(27,138,122,0.28);
+    }
+
+    /* Single sessions tab */
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(27,138,122,0.15), 0 20px 40px rgba(27,138,122,0.14);
+    }
+
+    .pricing-card.featured::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), #2cc4ae);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--primary);
+      color: white;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pricing-duration {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0f2f1;
+      color: #064e3b;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(27,138,122,0.12);
+    }
+
+    .pricing-name {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 0.35rem;
+    }
+
+    .pricing-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .pricing-price .currency {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .pricing-price .amount {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #111827;
+      line-height: 1;
+    }
+
+    .pricing-price .per {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .pricing-features li .check {
+      color: var(--primary);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.12rem;
+      font-weight: 900;
+    }
+
+    .pricing-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: "Gill Sans MT", sans-serif;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .pricing-cta-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 14px rgba(27,138,122,0.28);
+      border: none;
+    }
+
+    .pricing-cta-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(27,138,122,0.34);
+    }
+
+    .pricing-cta-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 1.5px solid rgba(20,100,87,0.35);
+    }
+
+    .pricing-cta-outline:hover {
+      background: #e0f2f1;
+      border-color: var(--primary);
+    }
+
+    /* Packages tab */
+    .package-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .package-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .package-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(27,138,122,0.15), 0 20px 40px rgba(27,138,122,0.14);
+    }
+
+    .package-card.featured::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), #2cc4ae);
+    }
+
+    .package-name { font-size: 1.2rem; font-weight: 900; color: #111827; margin-bottom: 0.2rem; }
+    .package-sessions {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .package-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .package-price .currency { font-size: 1rem; color: var(--muted); font-weight: 700; }
+    .package-price .amount { font-size: 2.5rem; font-weight: 900; color: #111827; line-height: 1; }
+
+    .package-per-session {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .package-save {
+      display: inline-block;
+      background: #fef9c3;
+      color: #854d0e;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid #fde68a;
+      margin-bottom: 1.2rem;
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    .package-features li .check { color: var(--primary); font-weight: 900; flex-shrink: 0; }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .pricing-note a { color: var(--primary); font-weight: 700; }
+
+    /* Hide/show tabs */
+    .pricing-tab { display: none; }
+    .pricing-tab.active { display: block; }
 
     /* ── COVERAGE ── */
     .coverage-list {
@@ -680,12 +1259,7 @@
       box-shadow: var(--shadow-soft);
     }
 
-    label {
-      display: block;
-      font-weight: 800;
-      margin-bottom: 0.45rem;
-      font-size: 0.9rem;
-    }
+    label { display: block; font-weight: 800; margin-bottom: 0.45rem; font-size: 0.9rem; }
 
     input {
       width: 100%;
@@ -700,154 +1274,6 @@
     input:focus {
       border-color: rgba(27, 138, 122, 0.55);
       box-shadow: 0 0 0 4px rgba(27, 138, 122, 0.12);
-    }
-
-    /* ── WHY NURTURED (honest pitch) ── */
-    .why-section {
-      background: var(--white);
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem;
-      align-items: start;
-    }
-
-    .why-problem h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: 1rem;
-    }
-
-    .why-problem-lead {
-      font-size: 1.02rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .why-reasons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .why-reason {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      background: #fafafa;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 0.85rem 1rem;
-      font-size: 0.92rem;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .why-reason-icon {
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    /* The solution side */
-    .why-solution {
-      position: sticky;
-      top: 5rem;
-    }
-
-    .why-solution-card {
-      background: linear-gradient(145deg, #e8faf7, #f0fdf9);
-      border: 1px solid rgba(27, 138, 122, 0.2);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: 0 16px 40px rgba(27, 138, 122, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .why-solution-card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), #2cc4ae);
-    }
-
-    .why-solution-tagline {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: #111827;
-      line-height: 1.25;
-      margin-bottom: 0.4rem;
-    }
-
-    .why-solution-tagline span {
-      color: var(--primary);
-    }
-
-    .why-solution-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.6rem;
-      line-height: 1.6;
-    }
-
-    .why-outcomes {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .why-outcome {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.1rem;
-      display: flex;
-      gap: 0.85rem;
-      align-items: flex-start;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-    }
-
-    .why-outcome-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
-
-    .why-outcome strong {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-      color: #111827;
-    }
-
-    .why-outcome p {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .why-comes-to-you {
-      background: var(--primary);
-      border-radius: var(--radius-md);
-      padding: 1rem 1.15rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      color: var(--white);
-    }
-
-    .why-comes-to-you-icon { font-size: 1.35rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .why-comes-to-you strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .why-comes-to-you p { font-size: 0.82rem; opacity: 0.88; line-height: 1.6; }
-
-    @media (max-width: 900px) {
-      .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .why-solution { position: static; }
     }
 
     /* ── FOOTER ── */
@@ -869,14 +1295,7 @@
     .footer-brand strong { font-size: 1rem; display: block; margin-bottom: 0.4rem; }
     .footer-brand p { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
 
-    .footer-col h4 {
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
+    .footer-col h4 { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .footer-col ul li a { font-size: 0.87rem; color: var(--muted); transition: color 0.2s; }
     .footer-col ul li a:hover { color: var(--primary); }
@@ -892,22 +1311,49 @@
       flex-wrap: wrap;
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ── BUTTONS (used outside hero) ── */
+    .btn-primary, .btn-outline {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      font-family: "Gill Sans MT", sans-serif;
+      transition: all 0.2s;
     }
 
-    .hero-grid > * { animation: fadeUp 0.6s ease both; }
-    .hero-grid > *:nth-child(2) { animation-delay: 0.10s; }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(27, 138, 122, 0.28);
+      border: 1px solid var(--primary);
+    }
 
-    /* ═══════════════════════════════════════
-       RESPONSIVE BREAKPOINTS
-    ═══════════════════════════════════════ */
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(27, 138, 122, 0.34);
+      border-color: var(--primary-dark);
+    }
 
-    /* ── TABLET (≤900px) ── */
+    .btn-outline {
+      border: 1.5px solid rgba(20, 100, 87, 0.35);
+      color: var(--primary-dark);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #e0f2f1;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
     @media (max-width: 900px) {
-      /* Show hamburger, hide desktop links and CTA */
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
@@ -915,8 +1361,9 @@
 
       section { padding: 3.5rem 0; }
 
-      .hero { padding: 3rem 0 2.5rem; }
-      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero { min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
+      .hero-scroll { display: none; }
 
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .about-photo { aspect-ratio: 3 / 2; font-size: 3.5rem; }
@@ -930,16 +1377,16 @@
 
       .coverage-list { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
 
+      .pricing-cards { grid-template-columns: 1fr; }
+      .package-cards { grid-template-columns: 1fr; }
+
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.8rem; }
       .footer-brand { grid-column: 1 / -1; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
 
-    /* ── MOBILE (≤600px) ── */
     @media (max-width: 600px) {
       .container { padding: 0 1rem; }
-
-      /* Nav: just logo + hamburger, nice and tight */
       .nav { padding: 0.6rem 1rem; }
       .nav-doctor-name { font-size: 0.9rem; }
       .nav-subtitle { font-size: 0.65rem; }
@@ -948,39 +1395,33 @@
 
       section { padding: 2.75rem 0; }
 
-      .hero { padding: 2rem 0 2rem; }
-      .hero h1 { font-size: 1.9rem; }
-      .hero-subtitle { font-size: 0.93rem; }
+      .hero-inner { padding: 3rem 1rem 2.5rem; }
+      .hero-headline { font-size: 2.2rem; }
 
       .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn-primary,
-      .hero-actions .btn-outline { text-align: center; padding: 0.85rem 1rem; }
+      .hero-actions .btn-hero-primary,
+      .hero-actions .btn-hero-outline { text-align: center; }
 
-      /* Info card: tighter on small screens */
-      .hero-info-card { padding: 1.25rem; }
+      .hero-card { padding: 1.25rem; }
       .hero-stats { gap: 0.6rem; }
-      .hero-stat strong { font-size: 1.35rem; }
+      .hero-stat strong { font-size: 1.4rem; }
 
       .services-grid { grid-template-columns: 1fr; }
-
       .process-steps { grid-template-columns: 1fr; }
-
       .coverage-list { grid-template-columns: 1fr; }
-
       .booking-wrapper { padding: 1.25rem; }
 
       .section-header { margin-bottom: 1.5rem; }
       .section-header h2 { font-size: 1.6rem; }
 
       .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      .pricing-toggle button { padding: 0.45rem 0.9rem; font-size: 0.82rem; }
     }
 
-    /* ── VERY SMALL (≤380px) ── */
     @media (max-width: 380px) {
       .nav-doctor-name { font-size: 0.82rem; }
-      .hero h1 { font-size: 1.65rem; }
-      .hero-stats { grid-template-columns: 1fr 1fr; }
-      .hero-stat strong { font-size: 1.15rem; }
+      .hero-headline { font-size: 1.9rem; }
     }
   </style>
 </head>
@@ -996,11 +1437,11 @@
         </div>
       </div>
 
-      <!-- Desktop nav links (hidden on mobile) -->
       <div class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
         <a href="#how-it-works">How it Works</a>
         <a href="#coverage">Areas</a>
         <a href="#booking">Book</a>
@@ -1009,10 +1450,8 @@
         <a href="contact.html">Contact Me</a>
       </div>
 
-      <!-- Desktop CTA (hidden on mobile) -->
-      <a href="#booking" class="nav-cta">Book a Stretch Session</a>
+      <a href="#booking" class="nav-cta">Book a Session</a>
 
-      <!-- Hamburger button (shown on mobile) -->
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -1020,11 +1459,11 @@
       </button>
     </nav>
 
-    <!-- Mobile drawer menu -->
     <div class="mobile-menu" id="mobileMenu" role="navigation">
       <a href="#home"         onclick="closeMenu()">🏠 Home</a>
       <a href="#about"        onclick="closeMenu()">👤 About</a>
       <a href="#services"     onclick="closeMenu()">🤸 Services</a>
+      <a href="#pricing"      onclick="closeMenu()">💳 Pricing</a>
       <a href="#how-it-works" onclick="closeMenu()">📋 How it Works</a>
       <a href="testimonials.html" onclick="closeMenu()">⭐ Testimonials</a>
       <a href="#blog"         onclick="closeMenu()">📚 Resources</a>
@@ -1033,72 +1472,104 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- ═══════════ HERO — CINEMATIC ═══════════ -->
   <main id="home" class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <div class="hero-brand">
-            <img src="assets/Nurtured-Logo.png" alt="Nurtured Logo" />
-            <div class="hero-brand-name">
-              <strong>Nurtured</strong>
-              <small>by Dr. Kibibi Mjomba</small>
-            </div>
-          </div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
 
-          <div class="tag">🌿 Stretch Therapy · Nairobi</div>
-          <div class="tag" style="background:#fdf2f8;color:#86198f;border-color:rgba(134,25,143,0.18);">♀ Women Only Service</div>
-
-          <h1>
-            Feel Longer, Move Freer,<br />
-            <span>Live Without Tension.</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            A physiotherapist-led stretch therapy practice offering professional assisted stretching for women — in the comfort of your home or office across Nairobi.
-            Release chronic tightness, restore your range of motion, and move through life the way your body was designed to.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#booking" class="btn-primary">Book a Stretch Session</a>
-            <a href="#services" class="btn-outline">Explore Services</a>
+    <div class="hero-inner">
+      <!-- Left: Copy -->
+      <div class="hero-left">
+        <div class="hero-brand-strip">
+          <img src="nurtured-logo.png" alt="Nurtured Logo" class="hero-logo-img" />
+          <div class="hero-brand-strip-text">
+            <strong>Nurtured · The Stretch City</strong>
+            <small>by Dr. Kibibi Mjomba</small>
           </div>
         </div>
 
-        <!-- Hero right card -->
-        <div class="hero-info-card">
-          <div class="hero-stats">
-            <div class="hero-stat"><strong>2+</strong><small>Years Experience</small></div>
-            <div class="hero-stat"><strong>500+</strong><small>Clients Stretched</small></div>
-            <div class="hero-stat"><strong>98%</strong><small>Satisfaction Rate</small></div>
-            <div class="hero-stat"><strong>7+</strong><small>Areas Covered</small></div>
-          </div>
+        <div class="hero-tags">
+          <span class="hero-pill hero-pill-green">🌿 Stretch Therapy · Nairobi</span>
+          <span class="hero-pill hero-pill-purple">♀ Women Only</span>
+        </div>
 
-          <div class="hero-info-row">
-            <span class="hero-info-icon">🏠</span>
-            <div>
-              <strong>Home & On-Site Sessions</strong>
-              <p>No gym or studio needed — your stretch session comes to you, fully equipped.</p>
-            </div>
-          </div>
+        <h1 class="hero-headline">
+          Stretch. Restore.
+          <span class="accent-line-soft">Feel cared for.</span>
+        </h1>
 
-          <div class="hero-info-row">
-            <span class="hero-info-icon">🌍</span>
-            <div>
-              <strong>Currently Serving</strong>
-              <p>Nairobi & surrounding areas</p>
-            </div>
-          </div>
+        <p class="hero-sub">
+          Nurtured is a physiotherapist-led stretch therapy practice dedicated to long-term flexibility (unlocking greater range of motion), mobility (actively controlling and using that range safely and efficiently over weeks, months, and years), and optimal joint health.<br><br>
+          We help keep your muscles loose and your movement efficient, delivering both immediate comfort &amp; relaxation as well as lasting resilience for a more pain-free, capable, and confident life.
+        </p>
 
-          <div class="hero-info-row">
-            <span class="hero-info-icon">♀️</span>
-            <div>
-              <strong>Women Only</strong>
-              <p>Nurtured is a women-only service, designed to be a safe, comfortable, and supportive experience.</p>
-            </div>
+        <div class="hero-actions">
+          <a href="#booking" class="btn-hero-primary">Book a Stretch Session</a>
+          <a href="#pricing" class="btn-hero-outline">See Pricing →</a>
+        </div>
+
+        <div class="hero-social-proof">
+          <div class="hero-avatars">
+            <div class="hero-avatar">AM</div>
+            <div class="hero-avatar">NW</div>
+            <div class="hero-avatar">FK</div>
+            <div class="hero-avatar">ZM</div>
+          </div>
+          <div class="hero-social-text">
+            <strong>500+ women stretched across Nairobi</strong>
+            <span class="hero-stars">★★★★★</span> 98% satisfaction rate
           </div>
         </div>
       </div>
+
+      <!-- Right: Glassmorphism card -->
+      <div class="hero-card">
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>2+</strong><small>Years Experience</small></div>
+          <div class="hero-stat"><strong>500+</strong><small>Clients Stretched</small></div>
+          <div class="hero-stat"><strong>98%</strong><small>Satisfaction Rate</small></div>
+          <div class="hero-stat"><strong>7+</strong><small>Areas Covered</small></div>
+        </div>
+
+        <div class="hero-info-row">
+          <span class="hero-info-icon">🏠</span>
+          <div>
+            <strong>Home & On-Site Sessions</strong>
+            <p>No gym needed — your session comes to you, fully equipped.</p>
+          </div>
+        </div>
+
+        <div class="hero-info-row">
+          <span class="hero-info-icon">🌍</span>
+          <div>
+            <strong>Currently Serving</strong>
+            <p>Nairobi & surrounding areas</p>
+            <div class="area-chips">
+              <span class="chip">Karen</span>
+              <span class="chip">Westlands</span>
+              <span class="chip">Kilimani</span>
+              <span class="chip">Lavington</span>
+              <span class="chip">Runda</span>
+              <span class="chip">Muthaiga</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-info-row">
+          <span class="hero-info-icon">♀️</span>
+          <div>
+            <strong>Women Only</strong>
+            <p>A safe, comfortable & fully supported experience, every time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero-scroll-arrow"></div>
     </div>
   </main>
 
@@ -1106,8 +1577,6 @@
   <section id="why" class="why-section">
     <div class="container">
       <div class="why-grid">
-
-        <!-- Left: The honest problem -->
         <div class="why-problem">
           <div class="section-eyebrow">Let's Be Honest</div>
           <h2>Most of us know we should stretch. Most of us don't.</h2>
@@ -1116,77 +1585,45 @@
           </p>
 
           <div class="why-reasons">
-            <div class="why-reason">
-              <span class="why-reason-icon">⏱️</span>
-              <span><strong>No time for it.</strong> Stretching takes time most of us don't have, so it gets skipped — again and again.</span>
-            </div>
-            <div class="why-reason">
-              <span class="why-reason-icon">🤷</span>
-              <span><strong>Underestimated.</strong> It's easy to dismiss how important stretching is for moving freely as we age — until the stiffness becomes impossible to ignore.</span>
-            </div>
-            <div class="why-reason">
-              <span class="why-reason-icon">😣</span>
-              <span><strong>Uncomfortable to hold.</strong> Staying still in an uncomfortable position while trying to stay relaxed? It's harder than it sounds.</span>
-            </div>
-            <div class="why-reason">
-              <span class="why-reason-icon">⚠️</span>
-              <span><strong>Easy to do it wrong.</strong> Poor form and incorrect stretching techniques don't just reduce results — they can lead to real injuries.</span>
-            </div>
-            <div class="why-reason">
-              <span class="why-reason-icon">🚫</span>
-              <span><strong>Some stretches just can't be done solo.</strong> Certain deep, targeted releases simply aren't possible without a second pair of hands — no matter how hard you try.</span>
-            </div>
+            <div class="why-reason"><span class="why-reason-icon">⏱️</span><span><strong>No time for it.</strong> Stretching takes time most of us don't have, so it gets skipped — again and again.</span></div>
+            <div class="why-reason"><span class="why-reason-icon">🤷</span><span><strong>Underestimated.</strong> It's easy to dismiss how important stretching is for moving freely as we age — until the stiffness becomes impossible to ignore.</span></div>
+            <div class="why-reason"><span class="why-reason-icon">😣</span><span><strong>Uncomfortable to hold.</strong> Staying still in an uncomfortable position while trying to stay relaxed? It's harder than it sounds.</span></div>
+            <div class="why-reason"><span class="why-reason-icon">⚠️</span><span><strong>Easy to do it wrong.</strong> Poor form and incorrect techniques don't just reduce results — they can cause real injuries.</span></div>
+            <div class="why-reason"><span class="why-reason-icon">🚫</span><span><strong>Some stretches can't be done solo.</strong> Certain deep releases simply aren't possible without a second pair of hands.</span></div>
           </div>
         </div>
 
-        <!-- Right: The solution -->
         <div class="why-solution">
           <div class="why-solution-card">
             <p class="why-solution-tagline">That's where <span>Nurtured</span> comes in.</p>
-            <p class="why-solution-sub">You relax. We do the work — guiding you into safe, effective stretches that go deeper than you could reach alone. All you have to do is show up and give us the time.</p>
+            <p class="why-solution-sub">You relax. We do the work — guiding you into safe, effective stretches that go deeper than you could reach alone.</p>
 
             <div class="why-outcomes">
               <div class="why-outcome">
                 <span class="why-outcome-icon">⚡</span>
-                <div>
-                  <strong>Immediate</strong>
-                  <p>Instant looseness, deep relaxation, and that <em>"ahh, my body can breathe"</em> feeling. Walk out calmer than you arrived.</p>
-                </div>
+                <div><strong>Immediate</strong><p>Instant looseness, deep relaxation, and that <em>"ahh, my body can breathe"</em> feeling after every session.</p></div>
               </div>
               <div class="why-outcome">
                 <span class="why-outcome-icon">📈</span>
-                <div>
-                  <strong>Over time</strong>
-                  <p>Progressive flexibility gains, better mobility, healthier joints, and the confidence to stay active and pain-free as you age.</p>
-                </div>
+                <div><strong>Over time</strong><p>Progressive flexibility gains, better mobility, and the confidence to stay active and pain-free as you age.</p></div>
               </div>
               <div class="why-outcome">
                 <span class="why-outcome-icon">✅</span>
-                <div>
-                  <strong>Zero hassle</strong>
-                  <p>Expert guidance means deeper results, no risk of poor form or injury, and sessions that fit your schedule.</p>
-                </div>
+                <div><strong>Zero hassle</strong><p>Expert guidance means deeper results, no risk of poor form, and sessions that fit your schedule.</p></div>
               </div>
             </div>
 
             <div class="why-comes-to-you">
               <span class="why-comes-to-you-icon">🏠</span>
-              <div>
-                <strong>The best part? We come to you.</strong>
-                <p>Professional assisted stretch therapy right to your home, office, or wherever you are in Nairobi — so you save time and energy on travel.</p>
-              </div>
+              <div><strong>The best part? We come to you.</strong><p>Professional assisted stretch therapy right to your home, office, or wherever you are in Nairobi.</p></div>
             </div>
 
             <div class="why-comes-to-you" style="background:#86198f;margin-top:0.75rem;">
               <span class="why-comes-to-you-icon">♀️</span>
-              <div>
-                <strong>Women only.</strong>
-                <p>Nurtured is exclusively for women — a safe, comfortable, and fully supported environment for every session.</p>
-              </div>
+              <div><strong>Women only.</strong><p>Nurtured is exclusively for women — a safe, comfortable, and fully supported environment for every session.</p></div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -1197,9 +1634,7 @@
       <div class="section-header">
         <div class="section-eyebrow">About</div>
         <h2>Meet Dr. Kibibi Mjomba</h2>
-        <p>
-          A licensed physiotherapist and stretch therapy specialist — helping people unlock better movement, ease chronic tension, and feel genuinely good in their bodies.
-        </p>
+        <p>A licensed physiotherapist and stretch therapy specialist — helping women unlock better movement, ease chronic tension, and feel genuinely good in their bodies.</p>
       </div>
 
       <div class="about-grid">
@@ -1212,15 +1647,9 @@
         </div>
 
         <div class="about-content">
-          <p>
-            Most of us walk around holding tension we don't even notice — tight hips from sitting all day, stiff shoulders from screen time, a lower back that never quite lets go. I started Nurtured because I believe that targeted, professional stretching is one of the most underused tools for feeling and moving better.
-          </p>
-          <p>
-            As a physiotherapist, I bring a clinical understanding of how your muscles, joints, and fascia work together. Every stretch session I deliver is personalised to your body, your goals, and the areas where you hold the most tension. No guesswork — just deliberate, effective, assisted stretching that makes a real difference.
-          </p>
-          <p>
-            Whether you want to ease chronic stiffness, improve athletic flexibility, recover from an injury, or simply feel more comfortable in your body day to day — I'll build a stretch plan around you.
-          </p>
+          <p>Most of us walk around holding tension we don't even notice — tight hips from sitting all day, stiff shoulders from screen time, a lower back that never quite lets go. I started Nurtured because I believe that targeted, professional stretching is one of the most underused tools for feeling and moving better.</p>
+          <p>As a physiotherapist, I bring a clinical understanding of how your muscles, joints, and fascia work together. Every stretch session I deliver is personalised to your body, your goals, and the areas where you hold the most tension. No guesswork — just deliberate, effective, assisted stretching that makes a real difference.</p>
+          <p>Whether you want to ease chronic stiffness, improve athletic flexibility, recover from an injury, or simply feel more comfortable in your body day to day — I'll build a stretch plan around you.</p>
 
           <div class="credentials">
             <span class="credential-badge">✓ Licensed Physiotherapist</span>
@@ -1249,14 +1678,12 @@
           <p>One-on-one guided stretching where I support and deepen each stretch for you — targeting the exact areas of tightness your body needs to release.</p>
           <div class="service-card-tag">→ 60 min sessions</div>
         </div>
-
         <div class="service-card">
           <div class="service-icon">🦵</div>
           <h3>Flexibility & Mobility Programmes</h3>
           <p>Structured multi-session plans to progressively improve your range of motion — ideal for athletes, desk workers, and anyone who wants to move more freely.</p>
           <div class="service-card-tag">→ Packages available</div>
         </div>
-
         <div class="service-card">
           <div class="service-icon">💼</div>
           <h3>Corporate Stretch & Wellness</h3>
@@ -1264,6 +1691,163 @@
           <div class="service-card-tag">→ Individuals & corporate teams</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRICING — NEW SECTION ═══════════ -->
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Pricing</div>
+        <h2>Simple, Transparent Pricing</h2>
+        <p>Choose a single session or save more with a package. All sessions are delivered to your home or office across Nairobi.</p>
+      </div>
+
+      <!-- Toggle -->
+      <div class="pricing-toggle-wrap">
+        <div class="pricing-toggle">
+          <button class="active" onclick="switchTab('single', this)">Single Sessions</button>
+          <button onclick="switchTab('packages', this)">Packages &nbsp;💚 Save more</button>
+        </div>
+      </div>
+
+      <!-- SINGLE SESSIONS TAB -->
+      <div class="pricing-tab active" id="tab-single">
+        <div class="pricing-cards">
+
+          <!-- 30 min -->
+          <div class="pricing-card">
+            <div class="pricing-duration">⏱ 30 minutes</div>
+            <div class="pricing-name">Quick Release</div>
+            <div class="pricing-desc">Targeted relief for one or two problem areas. Perfect for a quick reset during a busy day.</div>
+            <div class="pricing-price">
+              <span class="currency">KES</span>
+              <span class="amount">2,500</span>
+              <span class="per">/ session</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Targeted area focus (1–2 zones)</li>
+              <li><span class="check">✓</span> Delivered to your location</li>
+              <li><span class="check">✓</span> Personalised to your needs</li>
+              <li><span class="check">✓</span> Home stretch tip included</li>
+            </ul>
+            <a href="#booking" class="pricing-cta pricing-cta-outline">Book Now</a>
+          </div>
+
+          <!-- 60 min — FEATURED -->
+          <div class="pricing-card featured">
+            <span class="pricing-badge">Most Popular</span>
+            <div class="pricing-duration">⏱ 60 minutes</div>
+            <div class="pricing-name">Full Body Stretch</div>
+            <div class="pricing-desc">A comprehensive head-to-toe assisted stretch session, fully personalised to your body and goals.</div>
+            <div class="pricing-price">
+              <span class="currency">KES</span>
+              <span class="amount">4,500</span>
+              <span class="per">/ session</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Full body, all major muscle groups</li>
+              <li><span class="check">✓</span> Delivered to your location</li>
+              <li><span class="check">✓</span> Personalised stretch plan</li>
+              <li><span class="check">✓</span> Home routine guide included</li>
+              <li><span class="check">✓</span> Progress tracked across sessions</li>
+            </ul>
+            <a href="#booking" class="pricing-cta pricing-cta-primary">Book Now</a>
+          </div>
+
+          <!-- Corporate -->
+          <div class="pricing-card">
+            <div class="pricing-duration">💼 Corporate</div>
+            <div class="pricing-name">Team & Office</div>
+            <div class="pricing-desc">On-site stretch sessions for your team. Reduce desk tension, boost energy, and improve focus.</div>
+            <div class="pricing-price">
+              <span class="currency"></span>
+              <span class="amount" style="font-size:1.8rem;margin-bottom:0.1rem;">Custom</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Flexible team sizing</li>
+              <li><span class="check">✓</span> On-site at your office</li>
+              <li><span class="check">✓</span> Custom session scheduling</li>
+              <li><span class="check">✓</span> Wellness programme design</li>
+            </ul>
+            <a href="contact.html" class="pricing-cta pricing-cta-outline">Get a Quote</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PACKAGES TAB -->
+      <div class="pricing-tab" id="tab-packages">
+        <div class="package-cards">
+
+          <!-- Starter -->
+          <div class="package-card">
+            <div class="package-name">Starter Pack</div>
+            <div class="package-sessions">4 × 60-minute sessions</div>
+            <div class="package-price">
+              <span class="currency">KES</span>
+              <span class="amount">16,000</span>
+            </div>
+            <div class="package-per-session">KES 4,000 per session</div>
+            <div class="package-save">Save KES 2,000</div>
+            <ul class="package-features">
+              <li><span class="check">✓</span> 4 full-body stretch sessions</li>
+              <li><span class="check">✓</span> Delivered to your location</li>
+              <li><span class="check">✓</span> Personalised stretch plan</li>
+              <li><span class="check">✓</span> Valid for 6 weeks</li>
+            </ul>
+            <a href="#booking" class="pricing-cta pricing-cta-outline">Get Started</a>
+          </div>
+
+          <!-- Monthly — FEATURED -->
+          <div class="package-card featured">
+            <span class="pricing-badge">Best Value</span>
+            <div class="package-name">Monthly Wellness</div>
+            <div class="package-sessions">8 × 60-minute sessions</div>
+            <div class="package-price">
+              <span class="currency">KES</span>
+              <span class="amount">30,000</span>
+            </div>
+            <div class="package-per-session">KES 3,750 per session</div>
+            <div class="package-save">Save KES 6,000</div>
+            <ul class="package-features">
+              <li><span class="check">✓</span> 8 full-body stretch sessions</li>
+              <li><span class="check">✓</span> Delivered to your location</li>
+              <li><span class="check">✓</span> Progressive flexibility programme</li>
+              <li><span class="check">✓</span> Weekly check-in notes</li>
+              <li><span class="check">✓</span> Home routine guide</li>
+              <li><span class="check">✓</span> Valid for 5 weeks</li>
+            </ul>
+            <a href="#booking" class="pricing-cta pricing-cta-primary">Get Started</a>
+          </div>
+
+          <!-- Intensive -->
+          <div class="package-card">
+            <div class="package-name">Intensive Reset</div>
+            <div class="package-sessions">12 × 60-minute sessions</div>
+            <div class="package-price">
+              <span class="currency">KES</span>
+              <span class="amount">42,000</span>
+            </div>
+            <div class="package-per-session">KES 3,500 per session</div>
+            <div class="package-save">Save KES 12,000</div>
+            <ul class="package-features">
+              <li><span class="check">✓</span> 12 full-body stretch sessions</li>
+              <li><span class="check">✓</span> Delivered to your location</li>
+              <li><span class="check">✓</span> Full flexibility programme</li>
+              <li><span class="check">✓</span> Before & after mobility assessment</li>
+              <li><span class="check">✓</span> Priority scheduling</li>
+              <li><span class="check">✓</span> Valid for 8 weeks</li>
+            </ul>
+            <a href="#booking" class="pricing-cta pricing-cta-outline">Get Started</a>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="pricing-note">
+        Not sure which option is right for you? <a href="contact.html">Send a message</a> and I'll help you choose. · All prices include travel within covered Nairobi areas.
+      </p>
     </div>
   </section>
 
@@ -1285,7 +1869,7 @@
         <div class="process-step">
           <div class="step-num">2</div>
           <h4>Share Your Space</h4>
-          <p>Home, office, or any private space within our coverage areas — all I need is a mat-sized clear area.</p>
+          <p>Home, office, or any private space — all I need is a mat-sized clear area.</p>
         </div>
         <div class="process-step">
           <div class="step-num">3</div>
@@ -1295,7 +1879,7 @@
         <div class="process-step">
           <div class="step-num">4</div>
           <h4>Your Stretch Plan</h4>
-          <p>Leave with a personalised home-stretch routine to keep your progress going between sessions.</p>
+          <p>Leave with a personalised home-stretch routine to keep your progress going.</p>
         </div>
       </div>
     </div>
@@ -1307,7 +1891,7 @@
       <div class="section-header">
         <div class="section-eyebrow">Booking</div>
         <h2>Book Your Stretch Session</h2>
-        <p>Choose a time and location that suits you. I bring everything needed for a full stretch therapy session right to your door.</p>
+        <p>Choose a time and location that suits you. I bring everything needed right to your door.</p>
       </div>
 
       <div class="booking-wrapper">
@@ -1332,13 +1916,8 @@
           </div>
         </div>
 
-        <p style="margin-top:0.5rem;color:var(--muted);">
-          Prefer to see a calendar? Use the booking page below.
-        </p>
-
-        <p style="margin-top:1rem;">
-          <a class="btn-outline" href="contact.html">Open Booking Calendar</a>
-        </p>
+        <p style="margin-top:0.5rem;color:var(--muted);">Prefer to see a calendar? Use the booking page below.</p>
+        <p style="margin-top:1rem;"><a class="btn-outline" href="contact.html">Open Booking Calendar</a></p>
       </div>
     </div>
   </section>
@@ -1379,10 +1958,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <strong>Dr. Kibibi Mjomba — Nurtured</strong>
-          <p>
-            Professional stretch therapy and wellness services across Nairobi. Assisted stretching, flexibility programmes,
-            and corporate wellness — brought to your home or office by a licensed physiotherapist.
-          </p>
+          <p>Professional stretch therapy and wellness services across Nairobi. Assisted stretching, flexibility programmes, and corporate wellness — brought to your home or office by a licensed physiotherapist.</p>
         </div>
 
         <div class="footer-col">
@@ -1390,6 +1966,7 @@
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
             <li><a href="#how-it-works">How it Works</a></li>
             <li><a href="#booking">Book</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -1414,6 +1991,7 @@
   </footer>
 
   <script>
+    // Nav hamburger
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -1429,17 +2007,21 @@
       hamburger.setAttribute('aria-expanded', false);
     }
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMenu();
-      }
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
     });
 
-    // Close menu on resize back to desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth > 900) closeMenu();
     });
+
+    // Pricing tab switch
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.pricing-toggle button').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      btn.classList.add('active');
+    }
   </script>
 </body>
 </html>
