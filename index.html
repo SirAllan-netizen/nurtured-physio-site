@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -452,7 +453,8 @@
       }
 
       /* Left content */
-      .hero-left {
+      .hero-left,
+      .hero-centre {
         animation: heroFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
         max-width: 38rem;
       }
@@ -2083,6 +2085,44 @@
 
         .hero-inner {
           padding-top: 1rem;
+        }
+      }
+
+      /* Mobile about image adjustment: keep the caption below the photo */
+      @media (max-width: 600px) {
+        .about-photo {
+          aspect-ratio: auto;
+          overflow: hidden;
+          border-radius: var(--radius-lg);
+        }
+
+        .about-photo a {
+          display: block;
+        }
+
+        .about-photo-img {
+          width: 100%;
+          height: auto;
+          max-height: 360px;
+          object-fit: contain;
+          object-position: center top;
+        }
+
+        .about-photo-caption {
+          position: static;
+          margin: 0 1rem 1rem;
+          padding: 0.9rem 1rem;
+          border-radius: 12px;
+          font-size: 0.8rem;
+          line-height: 1.55;
+          background: rgba(255, 255, 255, 0.96);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .about-photo-caption strong {
+          font-size: 1rem;
+          margin-bottom: 0.2rem;
         }
       }
     </style>
